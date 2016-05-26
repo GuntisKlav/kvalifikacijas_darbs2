@@ -61,8 +61,9 @@
 						</tr>
 					</table>
 				</form>
-				<?php 
-				//include("user_insert.php");
+				
+				<?php   
+		       include("lietotaja_pievienosana.php");
 				?>
 			</div>
 		</div>

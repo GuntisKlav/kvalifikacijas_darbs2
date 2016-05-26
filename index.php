@@ -1,7 +1,12 @@
 <?php
+include("Funkcijas/funkcijas.php");
 include("template/header.php"); 
 include("template/content.php");
 include("template/footer.php");
+
+
+
+session_start();
 ?>
 <!DOCTYPE html>
 <html>

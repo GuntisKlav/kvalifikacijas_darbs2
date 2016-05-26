@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +16,6 @@
 
 <body>
 
-
+<h1>Laipni lūgts <?php  echo $SESSION['epasts'];  ?> </h1>
 </body>
 </html>
