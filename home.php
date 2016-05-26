@@ -1,12 +1,7 @@
-<?php 
+<?php
 session_start();
-
-
 ?>
-
-
-
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 	<title>Laipni lūgts!</title>
@@ -16,6 +11,6 @@ session_start();
 
 <body>
 
-<h1>Laipni lūgts <?php  echo $SESSION['epasts'];  ?> </h1>
+<h1>Laipni lūgts <?php echo $_SESSION['epasts'];?> </h1>
 </body>
-</html>
+</html> 

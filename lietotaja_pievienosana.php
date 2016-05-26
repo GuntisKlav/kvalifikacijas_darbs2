@@ -1,6 +1,6 @@
 <?php 
-
 include("Include/connection.php");
+
 
 
 
@@ -15,13 +15,13 @@ $vards = mysqli_real_escape_string($con, $_POST['vards']);
 $uzvards = mysqli_real_escape_string($con, $_POST['uzvards']);
 $lietotajvards = mysqli_real_escape_string($con, $_POST['lietotajvards']);
 $parole = mysqli_real_escape_string($con, $_POST['parole']);
-$epasts = mysqli_real_escape_string($con, $_POST['epasts']);
+$epasts_ = mysqli_real_escape_string($con, $_POST['epasts1']);
 $dzimums = mysqli_real_escape_string($con, $_POST['dzimums']);
 $dz_diena = $_POST['dz_diena'];
 $statuss = "Neverificēts";
 $posti = "Nē";
 
-$get_epasts = "SELECT * FROM lietotaji WHERE epasts = '$epasts'";
+$get_epasts = "SELECT * FROM lietotaji WHERE epasts = '$epasts_'";
 $run_epasts = mysqli_query($con, $get_epasts);
 $parbaude = mysqli_num_rows($run_epasts);
 //$md5_parole = md5($parole);
@@ -41,7 +41,7 @@ else{
 	$palaist_ievietosanu = mysqli_query($con, $ievietot);
 
 	if ($palaist_ievietosanu) {
-		$_SESSION['epasts'] = $epasts;
+		$_SESSION['epasts']=$epasts_;
 		echo "Reģistrācija veiksmīga!";
 		echo "<script>window.open('home.php', '_self')</script>";
 			}

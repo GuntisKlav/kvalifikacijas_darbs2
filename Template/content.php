@@ -1,7 +1,7 @@
 <!--Content area starts-->
 		<div id="content">
 			<div id="form2">
-				<form action="" method="post">
+				<form action="" method="POST">
 				<h2>Reģistrējies jau šodien!</h2>
 					<table> 
 						<tr>
@@ -32,7 +32,7 @@
 						<tr>
 							<td align="right">Epasts:</td>
 							<td>
-							<input type="email" name="epasts" placeholder=" Ievadi savu epastu" required="required"></td>
+							<input type="email" name="epasts1" placeholder=" Ievadi savu epastu" required="required"></td>
 						</tr>
 						
 						<tr>
