@@ -88,4 +88,78 @@ function sanemtIerakstus(){
 	include("pagination.php");
 	}
 
+function viensIeraksts(){
+	if(isset($_GET['ieraksta_id'])){
+	
+	global $con; 
+	
+	$get_id = $_GET['ieraksta_id'];
+		
+	$get_ieraksti = "SELECT * FROM ieraksti WHERE ieraksta_id='$get_id'";
+	
+	$run_ieraksti = mysqli_query($con, $get_posts);
+	
+	$rindas_ieraksti=mysqli_fetch_array($run_ieraksti);
+	
+		$ieraksta_id = $rindas_ieraksti['post_id'];
+		$lietotaja_id = $rindas_ieraksti['user_id'];
+		$saturs = $rindas_ieraksti['post_content'];
+		$ieraksta_datums = $rindas_ieraksti['post_date'];
+		
+		//Iegūšt lietotāju kurš publicēja ierakstu
+		$lietotajs = "SELECT * FROM lietotaji WHERE lietotaja_id='$lietotaja_id' AND posts='yes'"; 
+		
+		$run_lietotajs = mysqli_query($con, $lietotajs); 
+		$row_lietotajs=mysqli_fetch_array($run_lietotajs);
+		$lietotajvards = $row_lietotajs['lietotajvards'];
+		$lietotaja_bilde = $row_lietotajs['lietotaja_bilde'];
+
+		//Lietotāja sesija 
+		$lietotaja_s = $_SESSION['epasts'];
+		$get_s = "SELECT * FROM lietotaji WHERE epasts='$lietotaja_s'"; 
+		$run_s = mysqli_query($con,$get_s);
+		$rindas_s=mysqli_fetch_array($run_s);
+		$lietotaja_s_id = $rindas_s['id']; 
+		$lietotaja_s_vards = $rindas_s['lietotajvards'];
+		
+		
+		//Tagad visus kopā parāda 
+		echo "<div id='posts'>
+		
+		<p><img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='50' height='50'></p>
+		<h3><a href='user_profile.php?id=$lietotaja_id'>$lietotajvards</a></h3> 
+		<p>$eraksta_datums</p>
+		<p>$saturs</p>
+		
+		</div>
+		"; 
+		include("comments.php");
+		
+		echo "
+		<form action='' method='post' id='reply'>
+		<textarea cols='50' rows='5' name='comment' placeholder='Ieraksti savu komentāru'></textarea><br/>
+		<input type='submit' name='reply' value='Komentēt'/>
+		</form>
+		";
+		
+		if(isset($_POST['reply'])){
+		
+			$comment = $_POST['comment'];
+			
+			$insert = "insert into comments (post_id,user_id,comment,comment_author,date) values ('$post_id','$user_id','$comment','$user_com_name',NOW())";
+			
+			$run = mysqli_query($con,$insert); 
+			
+			echo "<h2>Your Reply was added!</h2>";
+			
+		
+		}
+	}
+	
+	}
+
+
+
+
+
 ?>
