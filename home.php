@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("Include/connection.php");
-//include("login.php");
+include("Funkcijas/funkcijas.php");
 ?>
 <!doctype html>
 <html>
@@ -14,7 +14,6 @@ include("Include/connection.php");
 
 <body>
 
-<h1>Laipni lūgts <?php echo $_SESSION['epasts'];?> </h1>
 
 <!--Container starts--> 
 	<div class="container">
@@ -23,8 +22,10 @@ include("Include/connection.php");
 			<!--Header Starts-->
 			<div id="header">
 				<ul id="menu">
-					<li><a href="home.php">Home</a></li>
-					<li><a href="members.php">Members</a></li>
+					<li><a href="home.php">Sākums</a></li>
+					<li><a href="#">Draugi</a></li>
+					<li><a href="#">Galerijas</a></li>
+					<li><a href="#">Pieteikties braucienam</a></li>
 					
 				</ul>
 				<form method="get" action="results.php" id="form1">
@@ -54,7 +55,7 @@ include("Include/connection.php");
 					$registresanas_d = $rinda1['reg_datums'];
 					$pedeja_sesija = $rinda1['pedeja_sesija'];
 			
-					//$lietotaja_zinojumi = "SELECT * FROM temas where id='$id'"; 
+					//$lietotaja_zinojumi = "SELECT * FROM ieraksti where ieraksta_id='$id'"; 
 					//$run_posts = mysqli_query($con, $lietotaja_zinojumi); 
 					//$posts = mysqli_num_rows($run_posts);
 					
@@ -87,16 +88,12 @@ include("Include/connection.php");
 				<div id="content_timeline">
 					<form action="home.php?id=<?php echo $lietotaja_id;?>" method="post" id="f">
 					<h2>Kas Tev prātā?</h2>
-					<textarea cols="83" rows="4" name="content" placeholder=" Pievienot ierakstu..."></textarea><br/>
-
-
-
+					<textarea cols="83" rows="4" name="saturs" placeholder=" Pievienot ierakstu..."></textarea><br/>
 					<input type="submit" name="sub" value="Pievienot"/>
 					</form>
-					<?php insertPost();?>
-					
-						<h3>Ko tavi draugi runā!</h3> 
-						<?php get_posts();?>
+					<?php ievietotIerakstu();?>
+						<h3>Most Recent Discussions!</h3> 
+						<?php sanemtIerakstus();?>
 				</div>
 				<!--Content timeline ends-->
 			</div>

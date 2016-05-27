@@ -22,7 +22,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	background-color:#E6E6FA;
+	background-color:#D8D8D8;
 }
 
 .container {
@@ -32,11 +32,12 @@ body {
 }
 #head_wrap{
 	width:100%; 
-	height:35px;
+	height:50px;
 	margin:0 auto;
-	border-bottom:2px solid brown;
+	border-bottom:1px solid black;
 	padding:10px; 
-	background:#AFEEEE;
+	background-image: url('../Bildes/background.jpg');
+	box-shadow: -5px 5px 30px;
 }
 
 #header {
@@ -45,7 +46,7 @@ body {
 	height:35px;
 }
 #menu {
-	line-height:35px; 
+	line-height:50px; 
 	padding:0; 
 	margin:0;
 	float:left;
@@ -54,19 +55,20 @@ body {
 #menu li {
 	display:inline; 
 	list-style:none;
+	text-decoration: none;
 }
 #menu a {
 	margin:5px; 
 	padding:5px; 
 	text-decoration:none;
-	color:gray; 
+	color:#D8D8D8; 
 	font-size:20px;
 	font-weight:bold;
 }
 #menu a:hover{
-	color:brown; 
+	color:#FFFFFF; 
 	font-weight:bolder;
-	text-decoration:underline;
+
 }
 #menu strong {
 	font-size:20px; 
@@ -75,7 +77,7 @@ body {
 }
 #form1 {
 	float:right;
-	line-height:35px;
+	line-height:50px;
 	padding-top:3px;
 }
 
@@ -161,11 +163,12 @@ body {
 }
 
 #pagination {
-	margin-top:20px;
+	margin-top:10px;
 }
 #pagination a{
 	color:blue; 
 	text-decoration:none; 
+	font-style: Times;
 	font-size:18px; 
 	margin:5px;
 }
@@ -174,24 +177,50 @@ body {
 	font-weight:bold;
 }
 
+/* Šeit sākās viu ierakstu stila rediģēšana/atribūti */
+#prof{
+	width: 100%;
+	height: 63px;
+	background: green;
+}
+#saturam{
+	margin-right: 3px;
+	width: 100%;
+	height: auto;
+	background: blue;
+
+}
+#poga{
+	width: 100%;
+	height: 38px;
+}
 #posts {
-	width:600px; 
-	background:#AFEEEE; 
-	padding:10px; 
-	line-height:20px;
-	border:1px solid black;
+	border-radius: 3px;
+	width:440px; 
+	height: auto;
+	background:gold; 
+
+	margin: 20px;
+	line-height:15px;
+	border:2px solid black;
 	text-align:justify;
 }
 #posts img {
-	float:left; 
-	padding-top:5px; 
-	padding-right:10px;
+	float:left;
+	margin: 5px;
+margin-right: 5px;
 }
 #posts h3 {
-	color:brown;
+	color:white;
+	text-decoration: none;
 }
 #posts button {
 	padding:5px;
+	margin: 4px;
+	float: right;
+	width: auto;
+	height: 30px;
+	
 }
 #posts button:hover{
 	background:black;

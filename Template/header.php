@@ -14,9 +14,7 @@
 			<!--Header starts-->
 			<div id="header">
 				<form method="post" action="" id="form1">
-					<strong>Epasts:</strong>
 					<input type="email" name="email1" placeholder=" Epasts" required="required" /> 
-					<strong>Parole:</strong>
 					<input type="password" name="pass1" placeholder=" Parole" required="required"/> 
 					<button name="login1">Ieiet</button>
 				</form>
