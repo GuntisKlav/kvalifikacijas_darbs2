@@ -36,14 +36,16 @@ echo "Parolei jāsastāv vismaz no 8 simboliem!";
 }
 
 else{
-	$ievietot = "INSERT INTO lietotaji (vards, uzvards, lietotajvards, parole, epasts, dzimums, dz_diena, lietotaja_bilde, reg_datums, pedeja_sesija, statuss, posts) VALUES ('$vards', '$uzvards', '$lietotajvards', '$parole', '$epasts', 'dzimums', '$dz_diena', 'default.jpg', NOW(), NOW(), '$statuss', '$posti')";
+	$ievietot = "INSERT INTO lietotaji (vards, uzvards, lietotajvards, parole, epasts, dzimums, dz_diena, lietotaja_bilde, reg_datums, pedeja_sesija, statuss, posts) VALUES ('$vards', '$uzvards', '$lietotajvards', '$parole', '$epasts_', 'dzimums', '$dz_diena', 'default.jpg', NOW(), NOW(), '$statuss', '$posti')";
 	$palaist_ievietosanu = mysqli_query($con, $ievietot);
 
 	if ($palaist_ievietosanu) {
 		$_SESSION['epasts']=$epasts_;
-		echo "Reģistrācija veiksmīga!";
-		echo "<script>window.open('home.php', '_self')</script>";
-			}
+	echo "<script>alert('Reģistrācja veiksmīga!'')</script>";
+
+		//echo "Reģistrācija veiksmīga!";
+	echo "<script>window.open('home.php', '_self')</script>";
+		}
 }
 }
 
