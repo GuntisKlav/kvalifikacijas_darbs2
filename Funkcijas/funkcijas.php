@@ -88,69 +88,73 @@ function sanemtIerakstus(){
 	include("pagination.php");
 	}
 
+
+
+
 function viensIeraksts(){
 	if(isset($_GET['ieraksta_id'])){
-	
+
 	global $con; 
 	
 	$get_id = $_GET['ieraksta_id'];
 		
-	$get_ieraksti = "SELECT * FROM ieraksti WHERE ieraksta_id='$get_id'";
+	$get_posts = "SELECT * FROM ierkasti WHERE ieraksta_id='$get_id'";
 	
-	$run_ieraksti = mysqli_query($con, $get_ieraksti);
+	$run_posts = mysqli_query($con,$get_posts);
 	
-	$rindas_ieraksti=mysqli_fetch_array($run_ieraksti);
+	$row_posts=mysqli_fetch_array($run_posts);
 	
-		$ieraksta_id = $rindas_ieraksti['ieraksta_id'];
-		$lietotaja_id = $rindas_ieraksti['lietotaja_id'];
-		$saturs = $rindas_ieraksti['ieraksta_saturs'];
-		$ieraksta_datums = $rindas_ieraksti['ieraksta_datums'];
+		$post_id = $row_posts['ieraksta_id'];
+		$user_id = $row_posts['lietotaj_id'];
+		$content = $row_posts['ieraksta_saturs'];
+		$post_date = $row_posts['ieraksta_datums'];
 		
-		//Iegūšt lietotāju kurš publicēja ierakstu
-		$lietotajs = "SELECT * FROM lietotaji WHERE id='$lietotaja_id' AND posts='yes'"; 
+		//atrod lietotāju, kurš izveidoja ierakstu
+		$user = "SELECT * FROM lietotaji WHERE id='$user_id' AND posts='yes'"; 
 		
-		$run_lietotajs = mysqli_query($con, $lietotajs); 
-		$row_lietotajs=mysqli_fetch_array($run_lietotajs);
-		$lietotajvards = $row_lietotajs['lietotajvards'];
-		$lietotaja_bilde = $row_lietotajs['lietotaja_bilde'];
+		$run_user = mysqli_query($con, $user); 
+		$row_user=mysqli_fetch_array($run_user);
+		$user_name = $row_user['lietotajvards'];
+		$user_image = $row_user['lietotaja_bilde'];
 
-		//Lietotāja sesija 
-		$lietotaja_s = $_SESSION['epasts'];
-		$get_s = "SELECT * FROM lietotaji WHERE epasts='$lietotaja_s'"; 
-		$run_s = mysqli_query($con,$get_s);
-		$rindas_s=mysqli_fetch_array($run_s);
-		$lietotaja_s_id = $rindas_s['id']; 
-		$lietotaja_s_vards = $rindas_s['lietotajvards'];
+		// Tiek pie lietotaja sesijas 
+		$user_com = $_SESSION['epasts'];
+		$get_com = "SELECT * FROM lietotaji WHERE user_email='$user_com'"; 
+		$run_com = mysqli_query($con,$get_com);
+		$row_com=mysqli_fetch_array($run_com);
+		$user_com_id = $row_com['user_id']; 
+		$user_com_name = $row_com['user_name'];
 		
 		
-		//Tagad visus kopā parāda 
+		//now displaying all at once 
 		echo "<div id='posts'>
 		
-		<p><img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='50' height='50'></p>
-		<h3><a href='user_profile.php?id=$lietotaja_id'>$lietotajvards</a></h3> 
-		<p>$ieraksta_datums</p>
-		<p>$saturs</p>
+		<p><img src='user/user_images/$user_image' width='50' height='50'></p>
+		<h3><a href='user_profile.php?user_id=$user_id'>$user_name</a></h3> 
+		<h3>$post_title</h3>
+		<p>$post_date</p>
+		<p>$content</p>
 		
 		</div>
 		"; 
-		include("comments.php");
+		include("komentari.php");
 		
 		echo "
-		<form action='' method='post' id='atbilde'>
-		<textarea cols='50' rows='5' name='komentars' placeholder='Ieraksti savu komentāru'></textarea><br/>
-		<input type='submit' name='atbilde' value='Komentēt'/>
+		<form action='' method='post' id='reply'>
+		<textarea cols='50' rows='5' name='comment' placeholder='write your reply'></textarea><br/>
+		<input type='submit' name='reply' value='Reply to This'/>
 		</form>
 		";
 		
-		if(isset($_POST['atbile'])){
+		if(isset($_POST['reply'])){
 		
-			$komentars = $_POST['komentars'];
+			$comment = $_POST['comment'];
 			
-			$insert = "INSERT INTO komentari (ieraksta_id,lietotaja_id, komentars, komentara_autors, date) VALUES ('$ieraksta_id','$lietotaja_id','$komentars', '$lietotajvards', NOW())";
+			$insert = "INSERT INTO komentari (ieraksta_id, lietotaja_id, komentars, ievietosanas_d, komentara_autors) values ('$post_id','$user_id','$comment','$user_com_name',NOW())";
 			
 			$run = mysqli_query($con,$insert); 
 			
-			echo "<h2>Tavs komentārs tika pievienots.</h2>";
+			echo "<h2>Your Reply was added!</h2>";
 			
 		
 		}
