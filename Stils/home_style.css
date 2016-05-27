@@ -37,6 +37,8 @@ body {
 	border-bottom:1px solid black;
 	padding:10px; 
 	background-image: url('../Bildes/background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 	box-shadow: -5px 5px 30px;
 }
 

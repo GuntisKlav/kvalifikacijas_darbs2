@@ -11,7 +11,7 @@ function ievietotIerakstu(){
 		$saturs = addslashes($_POST['saturs']);
 
 		if ($saturs == "") {
-		
+		echo "<h2>Lūdzu aizpildi lauku!</h2>";
 		}
 		else
 		{
