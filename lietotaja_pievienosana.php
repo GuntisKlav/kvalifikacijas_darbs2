@@ -3,7 +3,6 @@ include("Include/connection.php");
 
 
 
-
 //function ievietotLietotaju(){
 	//global $con;
 

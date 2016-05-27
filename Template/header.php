@@ -2,10 +2,9 @@
 
 <html> 
 	<head>
-		<title>My Social Network</title>
+		<title>Mountain Maniacs</title>
 	<link rel="stylesheet" href="styles/style.css" media="all"/>
 	</head>
-	
 	
 <body>
 	<!--container starts-->
@@ -16,9 +15,9 @@
 			<div id="header">
 				<form method="post" action="" id="form1">
 					<strong>Epasts:</strong>
-					<input type="email" name="epasts" placeholder=" TavsEpasts@gmail.com" required="required" /> 
+					<input type="email" name="email" placeholder=" Epasts" required="required" /> 
 					<strong>Parole:</strong>
-					<input type="password" name="parole" placeholder=" Parole" required="required"/> 
+					<input type="password" name="pass" placeholder=" Parole" required="required"/> 
 					<button name="login">Ieiet</button>
 				</form>
 			</div>

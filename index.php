@@ -4,7 +4,7 @@ include("Funkcijas/funkcijas.php");
 include("template/header.php"); 
 include("template/content.php");
 include("template/footer.php");
-
+include("login.php");
 ?>
 <!DOCTYPE html>
 <html>
