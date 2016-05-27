@@ -15,9 +15,7 @@ include("Include/connection.php");
 <body>
 
 <h1>Laipni lūgts <?php echo $_SESSION['epasts'];?> </h1>
-<ul>
-<a href="logout.php"><li>Iziet</li></a>
-</ul>
+
 <!--Container starts--> 
 	<div class="container">
 		<!--Header Wrapper Starts-->
@@ -27,25 +25,7 @@ include("Include/connection.php");
 				<ul id="menu">
 					<li><a href="home.php">Home</a></li>
 					<li><a href="members.php">Members</a></li>
-					<strong>Topics:</strong> 
-
-
-
-					<?php 
-					$get_tema = "SELECT * FROM temas"; 
-					$run_tema = mysqli_query($con, $get_tema);
 					
-					while($rinda=mysqli_fetch_array($run_tema)){
-						
-						$temas_id = $rinda['id'];
-						$temas_nosaukums = $rinda['nosaukums'];
-					
-					echo "<li><a href='topic.php?topic=$topic_id'>$topic_title</a></li>";
-					}
-					?>
-
-
-
 				</ul>
 				<form method="get" action="results.php" id="form1">
 					<input type="text" name="user_query" placeholder=" Meklēšana..."/> 
@@ -62,43 +42,42 @@ include("Include/connection.php");
 					<div id="user_details">
 					<?php 
 					$lietotajs = $_SESSION['epasts'];
-					$get_user = "SELECT * FROM lietotaji WHERE epasts='$lietotajs'"; 
-					$run_user = mysqli_query($con,$get_user);
-					$row=mysqli_fetch_array($run_user);
+					$get_lietotajs = "SELECT * FROM lietotaji WHERE epasts='$lietotajs'"; 
+					$run_lietotajs = mysqli_query($con,$get_lietotajs);
+					$rinda1=mysqli_fetch_array($run_lietotajs);
 					
-					$user_id = $row['user_id']; 
-					$user_name = $row['user_name'];
-					$user_country = $row['user_country'];
-					$user_image = $row['user_image'];
-					$register_date = $row['register_date'];
-					$last_login = $row['last_login'];
-					
-					$user_posts = "select * from posts where user_id='$user_id'"; 
-					$run_posts = mysqli_query($con,$user_posts); 
-					$posts = mysqli_num_rows($run_posts);
+					$lietotaja_id = $rinda1['id']; 
+					$vards = $rinda1['vards'];
+					$uzvards = $rinda1['uzvards'];
+					$lietotaj_vards = $rinda1['lietotajvards'];
+					$lietotaja_bilde = $rinda1['lietotaja_bilde'];
+					$registresanas_d = $rinda1['reg_datums'];
+					$pedeja_sesija = $rinda1['pedeja_sesija'];
+			
+					//$lietotaja_zinojumi = "SELECT * FROM temas where id='$id'"; 
+					//$run_posts = mysqli_query($con, $lietotaja_zinojumi); 
+					//$posts = mysqli_num_rows($run_posts);
 					
 					//getting the number of unread messages 
-					$sel_msg = "select * from messages where receiver='$user_id' AND status='unread' ORDER by 1 DESC"; 
-					$run_msg = mysqli_query($con,$sel_msg);		
+					//$sel_msg = "SELECT * FROM zinojumi WHERE sanemejs='$id' AND statuss='nelasita' ORDER by 1 DESC"; 
+					//$run_msg = mysqli_query($con,$sel_msg);		
 		
-					$count_msg = mysqli_num_rows($run_msg);
+					//$count_msg = mysqli_num_rows($run_msg);
 					
 					
 					echo "
 						<center>
-						<img src='user/user_images/$user_image' width='200' height='200'/>
+						<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='200' height='200'/>
 						</center>
-						<div id='user_mention'>
-						<p><strong>Name:</strong> $user_name</p>
-						<p><strong>Country:</strong> $user_country</p>
-						<p><strong>Last Login:</strong> $last_login</p>
-						<p><strong>Member Since:</strong> $register_date</p>
-						
-						<p><a href='my_messages.php?inbox&u_id=$user_id'>Messages ($count_msg)</a></p>
-						<p><a href='my_posts.php?u_id=$user_id'>My Posts ($posts)</a></p>
-						<p><a href='edit_profile.php?u_id=$user_id'>Edit My Account</a></p>
-						<p><a href='logout.php'>Logout</a></p>
-						</div>
+							<p><strong>Vārds:</strong>$vards $uzvards</p>
+
+						<p><strong>Lietotājvārds:</strong> $lietotaj_vards</p>
+						<p><strong>Pēdējo reizi manīts:</strong> $pedeja_sesija</p>
+						<p><strong>Konts izveidots:</strong> $registresanas_d</p>
+					<p><a href=''manas_zinas.php'>Ziņojumi</a></p>
+					<p><a href=''mani_posti.php'>Mani posti</a></p>
+					<p><a href=''iestatijumi.php'>Iestatījumi</a></p>
+						<p><a href='logout.php'>Iziet</a></p>
 					";
 					?>
 					</div>
@@ -106,19 +85,17 @@ include("Include/connection.php");
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
 				<div id="content_timeline">
-					<form action="home.php?id=<?php echo $user_id;?>" method="post" id="f">
-					<h2>What's your question today? let's discuss!</h2>
-					<input type="text" name="title" placeholder="Write a Title..." size="82" required="required"/><br/> 
-					<textarea cols="83" rows="4" name="content" placeholder="Write description..."></textarea><br/>
-					<select name="topic">
-						<option>Select Topic</option>
-						<?php getTopics();?>
-					</select>
-					<input type="submit" name="sub" value="Post to Timeline"/>
+					<form action="home.php?id=<?php echo $lietotaja_id;?>" method="post" id="f">
+					<h2>Kas Tev prātā?</h2>
+					<textarea cols="83" rows="4" name="content" placeholder=" Pievienot ierakstu..."></textarea><br/>
+
+
+
+					<input type="submit" name="sub" value="Pievienot"/>
 					</form>
 					<?php insertPost();?>
 					
-						<h3>Most Recent Discussions!</h3> 
+						<h3>Ko tavi draugi runā!</h3> 
 						<?php get_posts();?>
 				</div>
 				<!--Content timeline ends-->
