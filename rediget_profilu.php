@@ -17,6 +17,9 @@ else
 <head>
 	<title>Laipni lūgts!</title>
 	<link rel="stylesheet" href="Stils/home_style.css" media="all"/>
+	<style>
+	input[type='file']{width:180px;}
+	</style>
 </head>
 
 
@@ -61,6 +64,8 @@ else
 					$vards = $rinda1['vards'];
 					$uzvards = $rinda1['uzvards'];
 					$lietotaj_vards = $rinda1['lietotajvards'];
+					$parole = $rinda1['parole'];
+					$epasts = $rinda1['epasts'];
 					$lietotaja_bilde = $rinda1['lietotaja_bilde'];
 					$registresanas_d = $rinda1['reg_datums'];
 					$pedeja_sesija = $rinda1['pedeja_sesija'];
@@ -96,44 +101,48 @@ else
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
 				<div id="content_timeline">
-					<form action="" method="POST">
-			<h3>Profila iestatījumi</h3> 
-					<table> 
+
+
+
+
+<form action="" method="POST" id="f" class="ff" enctype="multipart/form-data"> 
+					<table>
+					<h3>Profila iestatījumi</h3> 
 						<tr>
-							<td align="right"></td>
+							<td align="right">Vārds: </td>
 							<td>
-							<input type="text" name="vards" placeholder=" Ievadi savu vārdu" required="required"/>
+							<input type="text" name="vards" required="required" value="<?php echo $vards;?>"/>
 							</td>
 						</tr>
 						<tr>
-							<td align="right"></td>
+							<td align="right">Uzvārds: </td>
 							<td>
-							<input type="text" name="uzvards" placeholder=" Ievadi savu uzvārdu" required="required"/>
+							<input type="text" name="uzvards" required="required" value="<?php echo $uzvards; ?>"/>
 							</td>
 						</tr>
 						<tr>
-							<td align="right"></td>
+							<td align="right">Lietotājvārds: </td>
 							<td>
-							<input type="text" name="lietotajvards" placeholder=" Ievadi savu lietotājvārdu" required="required"/>
+							<input type="text" name="lietotajvards" required="required" value="<?php echo $lietotaj_vards;?>"/>
 							</td>
 						</tr>
 						<tr>
-							<td align="right"></td>
+							<td align="right">Parole: </td>
 							<td>
-							<input type="password" name="parole" placeholder=" Ievadi savu paroli" required="required"/>
+							<input type="password" name="parole" required="required" value="<?php echo $parole;?>"/>
 							</td>
 						</tr>
 						
 						<tr>
-							<td align="right"></td>
+							<td align="right">Epasts: </td>
 							<td>
-							<input type="email" name="epasts1" placeholder=" Ievadi savu epastu" required="required"></td>
+							<input type="email" name="epasts1" required="required" value="<?php echo $epasts;?>"></td>
 						</tr>
 						
 						<tr>
 							<td align="right" required="required"></td>
 							<td>
-							<select name="dzimums">
+							<select name="dzimums" disabled="disabled">
 								<option>Izvēlies dzimumu</option>
 								<option>Vīrietis</option>
 								<option>sieviete</option>
@@ -143,15 +152,15 @@ else
 						</tr>
 						
 						<tr>
-							<td align="right"></td>
+							<td align="right">Profila bilde: </td>
 							<td>
-							<input type="date" name="dz_diena"/>
+					<input type="file" name="liet_bilde" required="required"/>
 							</td>
 						</tr>
 						
 						<tr>
 							<td colspan="6">
-							<button name="reg">Reģistrēties</button>
+						<input type="submit" name="atjaunot" value="Saglabāt"> 
 							</td>
 						</tr>
 					</table>
