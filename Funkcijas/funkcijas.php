@@ -98,19 +98,19 @@ function viensIeraksts(){
 	
 	$get_id = $_GET['ieraksta_id'];
 		
-	$get_posts = "SELECT * FROM ierkasti WHERE ieraksta_id='$get_id'";
+	$get_posts = "SELECT * FROM ieraksti WHERE ieraksta_id='$get_id'";
 	
 	$run_posts = mysqli_query($con,$get_posts);
 	
 	$row_posts=mysqli_fetch_array($run_posts);
 	
 		$post_id = $row_posts['ieraksta_id'];
-		$user_id = $row_posts['lietotaj_id'];
+		$lietotaja_id = $row_posts['lietotaja_id'];
 		$content = $row_posts['ieraksta_saturs'];
 		$post_date = $row_posts['ieraksta_datums'];
 		
 		//atrod lietotāju, kurš izveidoja ierakstu
-		$user = "SELECT * FROM lietotaji WHERE id='$user_id' AND posts='yes'"; 
+		$user = "SELECT * FROM lietotaji WHERE id='$lietotaja_id' AND posts='yes'"; 
 		
 		$run_user = mysqli_query($con, $user); 
 		$row_user=mysqli_fetch_array($run_user);
@@ -118,20 +118,19 @@ function viensIeraksts(){
 		$user_image = $row_user['lietotaja_bilde'];
 
 		// Tiek pie lietotaja sesijas 
-		$user_com = $_SESSION['epasts'];
-		$get_com = "SELECT * FROM lietotaji WHERE user_email='$user_com'"; 
-		$run_com = mysqli_query($con,$get_com);
-		$row_com=mysqli_fetch_array($run_com);
-		$user_com_id = $row_com['user_id']; 
-		$user_com_name = $row_com['user_name'];
+		$user_kom = $_SESSION['epasts'];
+		$get_kom = "SELECT * FROM lietotaji WHERE epasts='$user_kom'"; 
+		$run_kom = mysqli_query($con,$get_kom);
+		$row_kom=mysqli_fetch_array($run_kom);
+		$user_kom_id = $row_kom['id']; 
+		$user_kom_name = $row_kom['lietotajvards'];
 		
 		
-		//now displaying all at once 
+		//parāda visus reizē
 		echo "<div id='posts'>
 		
-		<p><img src='user/user_images/$user_image' width='50' height='50'></p>
-		<h3><a href='user_profile.php?user_id=$user_id'>$user_name</a></h3> 
-		<h3>$post_title</h3>
+		<p><img src='Lietotājs/Lietotaja_bildes/$user_image' width='50' height='50'></p>
+		<h3><a href='user_profile.php?id=$lietotaja_id'>$user_name</a></h3> 
 		<p>$post_date</p>
 		<p>$content</p>
 		
@@ -150,18 +149,66 @@ function viensIeraksts(){
 		
 			$comment = $_POST['comment'];
 			
-			$insert = "INSERT INTO komentari (ieraksta_id, lietotaja_id, komentars, ievietosanas_d, komentara_autors) values ('$post_id','$user_id','$comment','$user_com_name',NOW())";
+			$insert = "INSERT INTO komentari (ieraksta_id, lietotaja_id, komentars, komentara_autors, ievietosanas_d) values ('$post_id','$lietotaja_id','$comment','$user_kom_name',NOW())";
 			
 			$run = mysqli_query($con,$insert); 
 			
 			echo "<h2>Your Reply was added!</h2>";
-			
-		
 		}
 	}
-	
 	}
 
+function lietotajaIeraksti(){
+	
+	global $con;
+	if (isset($_GET['id'])) {
+		$id = $_GET['id'];
+	}
+	$get_ierakstus = "SELECT * FROM ieraksti WHERE lietotaja_id = '$id' ORDER by 1 DESC LIMIT 5";
+	 
+	$run_ieraksti = mysqli_query($con, $get_ierakstus);
+
+
+	
+	while($rindas_ieraksts=mysqli_fetch_array($run_ieraksti)){
+	
+		$ieraksta_id = $rindas_ieraksts['ieraksta_id'];
+		$lietotaja_id = $rindas_ieraksts['lietotaja_id'];
+		$saturs = $rindas_ieraksts['ieraksta_saturs'];
+		$ieraksta_datums = $rindas_ieraksts['ieraksta_datums'];
+		
+
+
+
+		//Saņem to lietotāju, kurš ir pievienojis ierakstu
+		$lietotajs = "SELECT * FROM lietotaji WHERE id='$lietotaja_id' AND posts='yes'"; 
+		
+		$palaist_lietotaju = mysqli_query($con, $lietotajs); 
+		$rinda_lietotajs = mysqli_fetch_array($palaist_lietotaju);
+		$lietotajvards = $rinda_lietotajs['lietotajvards'];
+		$lietotaja_bilde = $rinda_lietotajs['lietotaja_bilde'];
+		
+
+		//Parāda visus ierakstus reizē
+		echo "<div id='posts'>
+		<div id='prof'>
+		<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='50' height='50'/>
+		<br>
+		<h3><a href='user_profile.php?id = $lietotaja_id'>$lietotajvards</a></h3>
+		<p>$ieraksta_datums</p>
+		</div>
+		<div id='saturam'><p>$saturs</p></div>
+		<div id='poga'>
+		<a href='single.php?ieraksta_id=$ieraksta_id'><button> Skatīt</button></a>
+		<a href='single.php?ieraksta_id=$ieraksta_id'><button> Rediģēt</button></a>
+		<a href='izdzest_ierakstu.php?ieraksta_id=$ieraksta_id'><button>Dzēst</button></a>
+		</div>
+		</div><br/>
+		";
+		
+	}
+		//include("pagination2.php");
+	}
 
 
 

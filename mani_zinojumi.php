@@ -85,9 +85,9 @@ else
 						<p><strong>Lietotājvārds:</strong> $lietotaj_vards</p>
 						<p><strong>Pēdējo reizi manīts:</strong> $pedeja_sesija</p>
 						<p><strong>Konts izveidots:</strong> $registresanas_d</p>
-					<p><a href='manas_zinas.php?inbox&id=$lietotaja_id'>Ziņojumi ()</a></p>
-					<p><a href='mani_zinojumi.php?id=$lietotaja_id'>Mani ieraksti ($ieraksti)</a></p>
-					<p><a href='edit_profile.php?id=$lietotaja_id'>Edit My Account</a></p>
+					<p><a href=''manas_zinas.php'>Ziņojumi</a></p>
+					<p><a href=''mani_zinojumi.php'>Mani ieraksti ($ieraksti)</a></p>
+					<p><a href=''iestatijumi.php'>Iestatījumi</a></p>
 						<p><a href='logout.php'>Iziet</a></p>
 					";
 					?>
@@ -96,14 +96,10 @@ else
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
 				<div id="content_timeline">
-					<form action="home.php?id=<?php echo $lietotaja_id;?>" method="post" id="f">
-					<h2>Kas Tev prātā?</h2>
-					<textarea cols="83" rows="4" name="saturs" placeholder=" Pievienot ierakstu..."></textarea><br/>
-					<input type="submit" name="sub" value="Pievienot"/>
-					</form>
-					<?php ievietotIerakstu();?>
-						<h3> Ko citi runā?</h3> 
-						<?php sanemtIerakstus();?>
+					
+
+					<h2>Visi Jūsu ieraksti:</h2>
+						<?php lietotajaIeraksti();?>
 				</div>
 				<!--Content timeline ends-->
 			</div>

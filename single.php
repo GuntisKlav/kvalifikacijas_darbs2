@@ -93,17 +93,17 @@ else
 					?>
 					</div>
 				</div>
-				<!--user timeline ends-->
-				<!--Content timeline starts-->
+				<!--user timeline beidzaas-->
+				<!--Content timeline ssaakaas-->
 				<div id="content_timeline">
 						<?php viensIeraksts();?>
 				</div>
-				<!--Content timeline ends-->
+				<!--Content timeline beidzaas-->
 			</div>
-			<!--Content area ends-->
+			<!--Content area  beidzās-->
 		
 	</div>
-	<!--Container ends-->
+	<!--Container beidzās-->
 </body>
 </html> 
 

@@ -248,19 +248,19 @@ margin-right: 5px;
 	font-weight:bolder;
 	background:#F5F5DC;
 }
-#comments {
-	background:#5F9EA0;
+#komentars {
+	background:red;
 	padding:5px;
-	width:600px;
+	width:400px;
 	border-bottom:2px solid #F0FFF0;
 }
-#comments span {
+#komentars span {
 	color:#FFF8DC;
 }
-#comments h3 {
+#komentars h3 {
 	color:#FFD700;
 }
-#comments p {
+#komentars p {
 	line-height:20px; 
 	font-size:16px;
 	padding:5px;
