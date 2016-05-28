@@ -165,6 +165,31 @@ else
 						</tr>
 					</table>
 				</form>
+				<?php 
+if (isset($_POST['atjaunot'])) {
+	
+$vards_ = $_POST['vards'];
+$uzvards_ = $_POST['uzvards'];
+$lietotajvards_ = $_POST['lietotajvards'];
+$parole_ = $_POST['parole'];
+$epasts_ = $_POST['epasts1'];
+//$dzimums_ = $_POST['dzimums'];
+$bilde_ = $_FILES['liet_bilde']['name'];
+$profila_bilde_ = $_FILES['liet_bilde']['tmp_name'];
+
+move_uploaded_file($profila_bilde_, '../Lietotāji/Lietotaja_bildes/');
+
+$atjaunot = "UPDATE lietotaji SET vards = '$vards_', uzvards = '$uzvards_', lietotajvards = '$lietotajvards_', parole = '$parole_', epasts = $epasts_, lietotaja_bilde = '$bilde_' WHERE id = '$lietotaja_id'";
+$palaist = mysqli_query($con, $atjaunot);
+ if ($palaist) {
+ 	echo "<script>alert('Izmaiņs saglabātas')</script>";
+		echo "<script>window.open('home.php','_self')</script>";
+ }
+}
+
+
+
+				?> 
 						
 				
 				</div>
