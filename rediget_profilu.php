@@ -87,7 +87,7 @@ else
 						<p><strong>Konts izveidots:</strong> $registresanas_d</p>
 					<p><a href='manas_zinas.php?inbox&id=$lietotaja_id'>Ziņojumi ()</a></p>
 					<p><a href='mani_zinojumi.php?id=$lietotaja_id'>Mani ieraksti ($ieraksti)</a></p>
-					<p><a href='rediget_profilu.php?id=$lietotaja_id'>Profila iestatījumi</a></p>
+					<p><a href='edit_profile.php?id=$lietotaja_id'>Profila iestatījumi</a></p>
 						<p><a href='logout.php'>Iziet</a></p>
 					";
 					?>
@@ -96,14 +96,68 @@ else
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
 				<div id="content_timeline">
-					<form action="home.php?id=<?php echo $lietotaja_id;?>" method="post" id="f">
-					<h2>Kas Tev prātā?</h2>
-					<textarea cols="83" rows="4" name="saturs" placeholder=" Pievienot ierakstu..."></textarea><br/>
-					<input type="submit" name="sub" value="Pievienot"/>
-					</form>
-					<?php ievietotIerakstu();?>
-						<h3> Ko citi runā?</h3> 
-						<?php sanemtIerakstus();?>
+					<form action="" method="POST">
+			<h3>Profila iestatījumi</h3> 
+					<table> 
+						<tr>
+							<td align="right"></td>
+							<td>
+							<input type="text" name="vards" placeholder=" Ievadi savu vārdu" required="required"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td>
+							<input type="text" name="uzvards" placeholder=" Ievadi savu uzvārdu" required="required"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td>
+							<input type="text" name="lietotajvards" placeholder=" Ievadi savu lietotājvārdu" required="required"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td>
+							<input type="password" name="parole" placeholder=" Ievadi savu paroli" required="required"/>
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="right"></td>
+							<td>
+							<input type="email" name="epasts1" placeholder=" Ievadi savu epastu" required="required"></td>
+						</tr>
+						
+						<tr>
+							<td align="right" required="required"></td>
+							<td>
+							<select name="dzimums">
+								<option>Izvēlies dzimumu</option>
+								<option>Vīrietis</option>
+								<option>sieviete</option>
+								
+							</select>
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="right"></td>
+							<td>
+							<input type="date" name="dz_diena"/>
+							</td>
+						</tr>
+						
+						<tr>
+							<td colspan="6">
+							<button name="reg">Reģistrēties</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+						
+				
 				</div>
 				<!--Content timeline ends-->
 			</div>

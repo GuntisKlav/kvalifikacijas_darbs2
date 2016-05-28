@@ -250,39 +250,28 @@ function lietotajaProfils(){
 	}
 
 function echoKek(){
-	if(isset($_GET['id'])){
+if(isset($_GET['id'])){
 				
 				global $con;
 				
-				$user_id = $_GET['id']; 
+				$lietotaja_id = $_GET['id']; 
 				
-				$select = "SELECT * FROM lietotaji WHERE id='$user_id'";
+				$select = "SELECT * FROM lietotaji WHERE id='$lietotaja_id'";
 				$run = mysqli_query($con, $select); 
 				$row=mysqli_fetch_array($run);
 				
-				$liet_id = $row['id'];
-				$lietotaja_vards = $row['vards'];
-				$lietotaja_uzvards = $row['uzvards'];
-				$profila_bilde = $row['lietotaja_bilde'];
-				$lietotajvards = $row['lietotajvards'];
-				$dzimums = $row['dzimums'];
-				$pedeja_sesija = $row['pedeja_sesija']; 
-				$reg_datums = $row['reg_datums'];
+				$id = $row['id'];
+				$name = $row['vards'];
+				
 
 	echo "<div id='user_profile'>
 					
-					<img src='Lietotājs/Lietotaja_bildes/$profila_bilde' width='150' height='150' />
-					<br/>
+					<p><strong>Vārds:</strong>  </p><br/>
 					
-					<p><strong>Vārds:</strong> $lietotaja_vards </p><br/>
-					<p><strong>Uzvārds:</strong> $lietotaja_uzvards </p><br/>
-					<p><strong>Pēdējo reizi redzēts:</strong> $pedeja_sesija </p><br/>
-					<p><strong>Lietotājs kopš:</strong> $reg_datums</p>
-					<a href='zinas.php?id=$liet_id'><button>$msg</button></a><hr>
 					</div>
 				";
-}
 
+}
 }
 
 
