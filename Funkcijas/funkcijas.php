@@ -200,14 +200,14 @@ function lietotajaIeraksti(){
 		<div id='saturam'><p>$saturs</p></div>
 		<div id='poga'>
 		<a href='single.php?ieraksta_id=$ieraksta_id'><button> Skatīt</button></a>
-		<a href='single.php?ieraksta_id=$ieraksta_id'><button> Rediģēt</button></a>
-		<a href='izdzest_ierakstu.php?ieraksta_id=$ieraksta_id'><button>Dzēst</button></a>
+		<a href='rediget_ierakstu.php?ieraksta_id=$ieraksta_id'><button> Rediģēt</button></a>
+		<a href='Funkcijas/izdzest_ierakstu.php?ieraksta_id=$ieraksta_id'><button>Dzēst</button></a>
 		</div>
 		</div><br/>
 		";
 		
 	}
-		//include("pagination2.php");
+		include("izdzest_ierakstu.php");
 	}
 
 
