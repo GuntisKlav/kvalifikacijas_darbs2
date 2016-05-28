@@ -93,12 +93,14 @@ else
 					?>
 					</div>
 				</div>
+
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
 				<div id="content_timeline">
 					
 						<h3>Lietotāja informācija</h3> 
 						<?php lietotajaProfils();?>
+						<?php echoKek();?>
 				</div>
 				<!--Content timeline ends-->
 			</div>

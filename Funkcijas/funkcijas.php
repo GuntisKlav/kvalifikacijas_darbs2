@@ -130,7 +130,7 @@ function viensIeraksts(){
 		echo "<div id='posts'>
 		
 		<p><img src='Lietotājs/Lietotaja_bildes/$user_image' width='50' height='50'></p>
-		<h3><a href='user_profile.php?id=$lietotaja_id'>$user_name</a></h3> 
+		<h3><a href='lietotaja_profils.php?id=$lietotaja_id'>$user_name</a></h3> 
 		<p>$post_date</p>
 		<p>$content</p>
 		
@@ -194,7 +194,7 @@ function lietotajaIeraksti(){
 		<div id='prof'>
 		<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='50' height='50'/>
 		<br>
-		<h3><a href='user_profile.php?id = $lietotaja_id'>$lietotajvards</a></h3>
+		<h3><a href='lietotaja_profils.php?id = $lietotaja_id'>$lietotajvards</a></h3>
 		<p>$ieraksta_datums</p>
 		</div>
 		<div id='saturam'><p>$saturs</p></div>
@@ -230,13 +230,6 @@ function lietotajaProfils(){
 				$last_login = $row['pedeja_sesija']; 
 				$register_date = $row['reg_datums'];
 				
-				if($gender=='Vīrietis'){
-				$msg="Sūtīt viņam ziņu";
-				}
-				else {
-				$msg="Sūtīt viņai ziņu";
-				}
-				
 				echo "<div id='user_profile'>
 					
 					<img src='Lietotājs/Lietotaja_bildes/$image' width='150' height='150' />
@@ -244,18 +237,53 @@ function lietotajaProfils(){
 					
 					<p><strong>Vārds:</strong> $name </p><br/>
 					<p><strong>Uzvārds:</strong> $surname </p><br/>
-					<p><strong>Dzimums:</strong> $gender</p><br/>
 					<p><strong>Pēdējo reizi redzēts:</strong> $last_login </p><br/>
 					<p><strong>Lietotājs kopš:</strong> $register_date</p>
 					<a href='zinas.php?id=$id'><button>$msg</button></a><hr>
+					</div>
 				";
 	
 		}
 		//new_members();
 		
-		echo "</div>";
+		//echo "</div>";
 	}
 
+function echoKek(){
+	if(isset($_GET['id'])){
+				
+				global $con;
+				
+				$user_id = $_GET['id']; 
+				
+				$select = "SELECT * FROM lietotaji WHERE id='$user_id'";
+				$run = mysqli_query($con, $select); 
+				$row=mysqli_fetch_array($run);
+				
+				$liet_id = $row['id'];
+				$lietotaja_vards = $row['vards'];
+				$lietotaja_uzvards = $row['uzvards'];
+				$profila_bilde = $row['lietotaja_bilde'];
+				$lietotajvards = $row['lietotajvards'];
+				$dzimums = $row['dzimums'];
+				$pedeja_sesija = $row['pedeja_sesija']; 
+				$reg_datums = $row['reg_datums'];
+
+	echo "<div id='user_profile'>
+					
+					<img src='Lietotājs/Lietotaja_bildes/$profila_bilde' width='150' height='150' />
+					<br/>
+					
+					<p><strong>Vārds:</strong> $lietotaja_vards </p><br/>
+					<p><strong>Uzvārds:</strong> $lietotaja_uzvards </p><br/>
+					<p><strong>Pēdējo reizi redzēts:</strong> $pedeja_sesija </p><br/>
+					<p><strong>Lietotājs kopš:</strong> $reg_datums</p>
+					<a href='zinas.php?id=$liet_id'><button>$msg</button></a><hr>
+					</div>
+				";
+}
+
+}
 
 
 ?>
