@@ -5,6 +5,7 @@ include("Funkcijas/funkcijas.php");
 <html>
 <head>
 	<title>Skatīt visus lietotājus</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="AdminStyle/sessionStyle.css">
 </head>
 <body>
@@ -21,7 +22,30 @@ include("Funkcijas/funkcijas.php");
 </tr>
 <tr>
 <?php 
-echo connect2();
+$con = mysqli_connect("localhost", "root", "qrwe1432", "mountain_maniacs");
+
+//izvēlās visu informāciju no tabulas 'lietotaji'
+$query = "SELECT * FROM lietotaji";
+
+
+$palaist = mysqli_query($con, $query);
+while ($row = mysqli_fetch_array($palaist)) {
+	
+	$lietotaja_id = $row['id'];
+	$vards = $row['vards'];
+	$uzvards = $row['uzvards'];
+	$lietotajvards = $row['lietotajvards'];
+	$epasts = $row['epasts'];
+?> 
+<td><?php echo $lietotaja_id;   ?></td>
+<td><?php echo $vards;   ?></td>
+<td><?php echo $uzvards;   ?></td>
+<td><?php echo $lietotajvards;   ?></td>
+<td><?php echo $epasts;   ?></td>
+<td><a href='dzest.php?dzest=<?php echo $lietotaja_id;?>'>Dzēst</td>
+</tr>
+ <?php } ?>
+
 
 ?>
 

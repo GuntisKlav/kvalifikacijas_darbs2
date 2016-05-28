@@ -1,14 +1,6 @@
 <?php 
 include("Include/connection.php");
 
-
-
-//function ievietotLietotaju(){
-	//global $con;
-
-
-
-
 	if (isset($_POST['reg'])) {
 $vards = mysqli_real_escape_string($con, $_POST['vards']);
 $uzvards = mysqli_real_escape_string($con, $_POST['uzvards']);
@@ -34,7 +26,6 @@ if (strlen($parole) <8) {
 echo "Parolei jāsastāv vismaz no 8 simboliem!";
 	exit();	
 }
-
 else{
 	$ievietot = "INSERT INTO lietotaji (vards, uzvards, lietotajvards, parole, epasts, dzimums, dz_diena, lietotaja_bilde, reg_datums, pedeja_sesija, statuss, posts) VALUES ('$vards', '$uzvards', '$lietotajvards', '$parole', '$epasts_', 'dzimums', '$dz_diena', 'default.jpg', NOW(), NOW(), '$statuss', '$posti')";
 	$palaist_ievietosanu = mysqli_query($con, $ievietot);
@@ -42,15 +33,7 @@ else{
 	if ($palaist_ievietosanu) {
 		$_SESSION['epasts']=$epasts_;
 	echo "<script>alert('Reģistrācja veiksmīga!'')</script>";
-
-		//echo "Reģistrācija veiksmīga!";
-	echo "<script>window.open('home.php', '_self')</script>";
 		}
 }
 }
-
-
-
-//}
-
 ?>
