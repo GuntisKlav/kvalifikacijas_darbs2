@@ -1,8 +1,7 @@
 <?php 
-include("Funkcijas/funkcijas.php");
-
-
+session_start();
 ?> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +12,7 @@ include("Funkcijas/funkcijas.php");
 <body>
 <div id="konteineris">
 <div id="login">
-<form>
+<form method="post" action="admin_login.php">
 <br>
 <h1>Admin Login</h1>
 <br>
@@ -28,6 +27,23 @@ include("Funkcijas/funkcijas.php");
 </html>
 
 <?php 
-echo connect();
+$con = mysqli_connect("localhost", "root", "qrwe1432", "mountain_maniacs");
+//ja Poga ir aktīva, vai nospiesta, tiks palaists php kods
+if (isset($_POST['admin_login'])) {
+	//saņemsim informāciju, un to glabāsim lokālajos mainīgajos
+	$admin_username = $_POST['admin_lietotajvards'];
+	$admin_pass = $_POST['admin_parole'];
+// Piešķiram DB laukiem vērtības, ko tikko nedefinējām ar lokālajiem mainīgajiem
+	$query = "SELECT * FROM administratori WHERE admin_lietotajvards = '$admin_username' AND admin_parole = '$admin_pass'";
+
+$palaist = mysqli_query($con, $query);
+if (mysqli_num_rows($palaist) > 0) {
+	$_SESSION['admin_lietotajvards'] = $admin_username;
+	echo "<script>window.open('skatit_lietotajus.php', '_self')</script>";
+}
+else{
+	echo "<script>alert('Lietotājvārds vai parole ir nepareizi!')</script>";
+}
+}
 
 ?> 

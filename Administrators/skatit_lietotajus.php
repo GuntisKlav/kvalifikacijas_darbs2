@@ -1,5 +1,8 @@
 <?php 
-include("Funkcijas/funkcijas.php");
+session_start();
+if (!isset($_SESSION['admin_lietotajvards'])) {
+	header("location: admin_login.php");
+}
 ?> 
 <!DOCTYPE html>
 <html>
@@ -9,9 +12,17 @@ include("Funkcijas/funkcijas.php");
 	<link rel="stylesheet" type="text/css" href="AdminStyle/sessionStyle.css">
 </head>
 <body>
+<div id="konteineris">
 <br>
-<center><h1 id="virsraksts">Visa lietotāju informācija</h1></center><br>
-<center><table id="table1" width='800' align='center' border='10'>
+<center><h1 id="virsraksts">Visa lietotāju informācija</h1></center>
+
+<button id="button1"><a href="logout.php">Iziet</a></button>
+
+<br>
+<br>
+<br>
+<div id="tabula">
+<center><table id="table1" width='800' align='center' border='2'>
 <tr bgcolor='yellow'>
 <th>Lietotāja ID</th>
 <th>Vārds</th>
@@ -46,9 +57,8 @@ while ($row = mysqli_fetch_array($palaist)) {
 </tr>
  <?php } ?>
 
-
-?>
-
 </table></center>
+</div>
+</div>
 </body>
 </html>
