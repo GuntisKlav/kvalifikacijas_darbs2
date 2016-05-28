@@ -143,3 +143,12 @@ cursor: pointer;
 	color:white;
 
 }
+
+#parMM{
+	margin-left: -220px;
+	margin-top: 160px;
+	height: 400px;
+	width: 650px;
+	background-color: silver;
+	float: left;
+}

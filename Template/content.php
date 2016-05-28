@@ -1,9 +1,9 @@
 <!--Content area starts-->
 
 		<div id="content">
+		<div id="parMM"></div>
 			<div id="form2">
 				<form action="" method="POST">
-				<!-- <h2>Reģistrējies jau šodien!</h2> -->
 					<table> 
 						<tr>
 							<td align="right"></td>
