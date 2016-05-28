@@ -96,47 +96,9 @@ else
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
 				<div id="content_timeline">
-				<?php 
-					if(isset($_GET['ieraksta_id'])){
-						
-						$get_id = $_GET['ieraksta_id']; 
-						
-						$get_post = "SELECT * FROM ieraksti WHERE ieraksta_id='$get_id'"; 
-						$run_post = mysqli_query($con, $get_post); 
-						$row=mysqli_fetch_array($run_post); 
-
-						$post_con = $row['ieraksta_saturs']; 
 					
-					}
-				?>
-					<form action="" method="post" id="f">
-					<h2>Rediģē savu ierakstu:</h2> 
-					<textarea cols="83" rows="4" name="ieraksta_saturs"><?php echo $post_con;?></textarea><br/>
-					<input type="submit" name="update" value="Update Post"/>
-					</form>
-		<?php
-					if(isset($_POST['update'])){
-					
-		
-					$saturs = $_POST['ieraksta_saturs'];
-				
-					
-					$update_post = "UPDATE ieraksti SET ieraksta_saturs='$saturs' WHERE ieraksta_id='$get_id'";
-					$run_update = mysqli_query($con,$update_post); 
-					
-					if($run_update){
-					
-					echo "<script>alert('Ieraksts ir saglabāts.')</script>";
-					echo "<script>window.open('home.php','_self')</script>";
-					
-					}
-					
-					}
-					
-					?>
-
-	
-		
+						<h3>Lietotāja informācija</h3> 
+						<?php lietotajaProfils();?>
 				</div>
 				<!--Content timeline ends-->
 			</div>
