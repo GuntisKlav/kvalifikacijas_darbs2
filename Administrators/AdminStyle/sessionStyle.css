@@ -17,15 +17,16 @@ body {
 	margin-top: 40px;
 	padding-bottom: 40px;
 	width: 1000px;
-	height: 100%;
-	background-color: #01DF3A;
+	height: auto;
+	background-color: #0B4C5F;
+	box-shadow: 0px 0px 60px;
 	margin-left: auto;
 	margin-right: auto;
 
 }
 #virsraksts{
-	font-family: Andale Mono, monospace;
 	color: white;
+	font-family: Lucidatypewriter, monospace;
 }
 table th{
 	height: 20px;
@@ -42,10 +43,7 @@ table{
 	box-shadow: 0px 5px 30px;
 	background: white;
 }
-@media only screen and (max-width: 768px){
-	#table1{
-		width: 200px;
-	}
+
 }
 #button1{
 	margin-top: 30px;
@@ -101,3 +99,51 @@ button a{
 	color: white;
 	font-size: 20px;
 }
+
+#ff textarea{
+	font-size: 20px;
+	padding: 5px;
+}
+
+#ff h2{
+	color: white;
+	font-family: Lucidatypewriter, monospace;
+
+}
+#content_timeline{
+	border-radius: 2px;
+	margin-top: 30px;
+	width: 1000px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #0B4C5F;
+	box-shadow: 0px 0px 60px;
+
+}
+
+#ff input{
+	border-radius: 2px;
+	height: 40px;
+	width: 80px;
+	margin-left: 800px;
+	margin-top: 10px;
+
+}
+
+#saturss{
+	  max-width: 100px;
+    overflow: scroll;
+
+    white-space: nowrap;
+}
+@media only screen and (max-width: 768px){
+	#table1{
+		width: 200px;
+	}
+	#tabula{
+		width: auto;
+	}
+	#konteineris{
+		width: auto;
+	}
+	}

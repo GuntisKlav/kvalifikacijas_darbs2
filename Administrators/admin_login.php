@@ -1,7 +1,7 @@
 <?php 
 session_start();
 ?> 
-
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,7 @@ session_start();
 </head>
 
 <body>
+<a href="../index.php"><img id="img" src="Bildes/reply.png"></a>
 <div id="konteineris">
 <div id="login">
 <form method="post" action="admin_login.php">
@@ -27,7 +28,7 @@ session_start();
 </html>
 
 <?php 
-$con = mysqli_connect("localhost", "root", "qrwe1432", "mountain_maniacs");
+$con1 = mysqli_connect("localhost", "root", "qrwe1432", "mountain_maniacs");
 //ja Poga ir aktīva, vai nospiesta, tiks palaists php kods
 if (isset($_POST['admin_login'])) {
 	//saņemsim informāciju, un to glabāsim lokālajos mainīgajos
@@ -36,7 +37,7 @@ if (isset($_POST['admin_login'])) {
 // Piešķiram DB laukiem vērtības, ko tikko nedefinējām ar lokālajiem mainīgajiem
 	$query = "SELECT * FROM administratori WHERE admin_lietotajvards = '$admin_username' AND admin_parole = '$admin_pass'";
 
-$palaist = mysqli_query($con, $query);
+$palaist = mysqli_query($con1, $query);
 if (mysqli_num_rows($palaist) > 0) {
 	$_SESSION['admin_lietotajvards'] = $admin_username;
 	echo "<script>window.open('skatit_lietotajus.php', '_self')</script>";

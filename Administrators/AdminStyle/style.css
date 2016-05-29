@@ -16,7 +16,7 @@ time, mark, audio, video {
 	border: 0;
 }
 article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+footer, header, hgroup, menu, nav, section {  
 	display: block;
 }
 body, html{
@@ -72,4 +72,18 @@ box-shadow: 5px 5px 40px;
 	box-shadow: 0px 0px 400px;
 	cursor: pointer;
 }
+
+#img {
+	border-radius: 3px;
+	width: 50px;
+	height: 50px;
+	background: #FFBF00;
+	padding: 4px;
+	float: left;
+	margin-left: 50px;
+	margin-top: 50px;
+	border: 1px solid black;
+	box-shadow: 0px 0px 50px black;
+}
+
 

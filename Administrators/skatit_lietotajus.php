@@ -68,24 +68,6 @@ while ($row = mysqli_fetch_array($palaist)) {
 </div>
 </div>
 <br><br><br>
-<center><div id="timeline"></dcenter>
-<div id="content_timeline">
 
-
-					<form action="skatit_lietotajus.php?id=<?php echo $lietotaja_id;?>" method="post" id="f">
-					<h2>Kas Tev prātā?</h2><br>
-					<textarea cols="83" rows="1" name="autors1" placeholder=" Autors..."></textarea><br>
-
-					<textarea cols="83" rows="1" name="nosaukums1" placeholder=" Nosaukums..."></textarea><br>
-
-					<textarea cols="83" rows="4" name="saturs1" placeholder=" Pievienot ierakstu..."></textarea><br/>
-
-					<input type="submit" name="kek" value="Pievienot"/>
-					</form>
-					<?php ievietotJaunumus();?>
-
-
-				</div>
-				</div>
 </body>
 </html>

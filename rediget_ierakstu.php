@@ -34,8 +34,8 @@ else
 					<li><a href="home.php">Sākums</a></li>
 					<li><a href="#">Draugi</a></li>
 					<li><a href="#">Galerijas</a></li>
-					<li><a href="#">Jaunumi</a>
-					<li><a href="#">Pieteikties braucienam</a></li>
+					<li><a href="jaunumi.php">Jaunumi</a>
+					<li><a href="pieteikties_braucienam.php">Pieteikties braucienam</a></li>
 					
 				</ul>
 				<form method="get" action="results.php" id="form1">

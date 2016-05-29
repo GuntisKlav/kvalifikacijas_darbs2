@@ -36,7 +36,7 @@ body {
 	margin:0 auto;
 	border-bottom:1px solid black;
 	padding:10px; 
-	background-image: url('../Bildes/11.jpg');
+	background-image: url('../Bildes/4.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	box-shadow: -5px 5px 30px;
@@ -321,4 +321,11 @@ margin-right: 5px;
 	padding-top:3px; 
 	color:white;
 
+}
+
+#braucieni{
+	margin-top: 100px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: gold;
 }
