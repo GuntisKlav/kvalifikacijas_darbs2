@@ -13,13 +13,18 @@ if (!isset($_SESSION['admin_lietotajvards'])) {
 	<link rel="stylesheet" type="text/css" href="AdminStyle/sessionStyle.css">
 </head>
 <body>
-<div id=header1></div>
+<div id=header1>
+<nav id="nav">
+	<ul>
+		<li><a href="skatit_lietotajus.php">Lietotāji</a></li>
+		<li><a href="jaunumi.php">Jaunumi</a></li>
+		<li><a href="logout.php">Iziet</a></li>
+	</ul>
+</nav>
+</div>
 <div id="konteineris">
 <br>
 <center><h1 id="virsraksts">Visa lietotāju informācija</h1></center>
-
-<button id="button1"><a href="logout.php">Iziet</a></button>
-
 <br>
 <br>
 <br>
