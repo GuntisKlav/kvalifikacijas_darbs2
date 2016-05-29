@@ -32,7 +32,7 @@ else
 			<div id="header">
 				<ul id="menu">
 					<li><a href="home.php">Sākums</a></li>
-					<li><a href="#">Draugi</a></li>
+				<li><a href="lietotaji.php">Lietotāji</a></li>
 					<li><a href="#">Galerijas</a></li>
 					<li><a href="jaunumi.php">Jaunumi</a>
 					<li><a href="pieteikties_braucienam.php">Pieteikties braucienam</a></li>

@@ -32,7 +32,7 @@ else
 			<div id="header">
 				<ul id="menu">
 					<li><a href="home.php">Sākums</a></li>
-					<li><a href="#">Draugi</a></li>
+					<li><a href="lietotaji.php">Lietotāji</a></li>
 					<li><a href="#">Galerijas</a></li>
 					<li><a href="jaunumi.php">Jaunumi</a>
 					<li><a href="pieteikties_braucienam.php">Pieteikties braucienam</a></li>
@@ -87,7 +87,7 @@ else
 						<p><strong>Konts izveidots:</strong> $registresanas_d</p>
 					<p><a href='manas_zinas.php?inbox&id=$lietotaja_id'>Ziņojumi ()</a></p>
 					<p><a href='mani_zinojumi.php?id=$lietotaja_id'>Mani ieraksti ($ieraksti)</a></p>
-					<p><a href='edit_profile.php?id=$lietotaja_id'>Edit My Account</a></p>
+					<p><a href='rediget_profilu.php?id=$lietotaja_id'>Edit My Account</a></p>
 						<p><a href='logout.php'>Iziet</a></p>
 					";
 					?>
@@ -100,7 +100,7 @@ else
 					
 						<h3>Lietotāja informācija</h3> 
 				
-						<?php echoKek();?>
+						<?php lietotajaProfils();?>
 				</div>
 				<!--Content timeline ends-->
 			</div>
@@ -109,6 +109,6 @@ else
 	</div>
 	<!--Container ends-->
 </body>
-</html> 
+</html>  
 
 <?php } ?>  

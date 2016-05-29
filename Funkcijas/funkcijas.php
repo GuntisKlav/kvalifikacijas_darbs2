@@ -73,7 +73,7 @@ function sanemtIerakstus(){
 		<div id='prof'>
 		<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='50' height='50'/>
 		<br>
-		<h3><a href='lietotaja_profils.php?id = $lietotaja_id'>$lietotajvards</a></h3>
+		<h3><a href='lietotaja_profils.php?liet_id=$lietotaja_id'>$lietotajvards</a></h3>
 		<p>$ieraksta_datums</p>
 		</div>
 		<div id='saturam'><p>$saturs</p></div>
@@ -210,12 +210,11 @@ function lietotajaIeraksti(){
 		include("izdzest_ierakstu.php");
 	}
 function lietotajaProfils(){
-		
-		if(isset($_GET['id'])){
+	if(isset($_GET['liet_id'])){
 				
 				global $con;
 				
-				$user_id = $_GET['id']; 
+$user_id = $_GET['liet_id']; 
 				
 				$select = "SELECT * FROM lietotaji WHERE id='$user_id'";
 				$run = mysqli_query($con, $select); 
@@ -229,17 +228,16 @@ function lietotajaProfils(){
 				$gender = $row['dzimums'];
 				$last_login = $row['pedeja_sesija']; 
 				$register_date = $row['reg_datums'];
-				
 				echo "<div id='user_profile'>
 					
 					<img src='Lietotājs/Lietotaja_bildes/$image' width='150' height='150' />
-					<br/>
+				<br/>
 					
 					<p><strong>Vārds:</strong> $name </p><br/>
 					<p><strong>Uzvārds:</strong> $surname </p><br/>
 					<p><strong>Pēdējo reizi redzēts:</strong> $last_login </p><br/>
 					<p><strong>Lietotājs kopš:</strong> $register_date</p>
-					<a href='zinas.php?id=$id'><button>$msg</button></a><hr>
+					<a href='zinas.php?liet_id=$id'><button>$msg</button></a><hr>
 					</div>
 				";
 	
@@ -274,15 +272,13 @@ function ievietotJaunumus(){
 }
 
 
-
-	
 	function adminaIeraksti(){
 	
 	global $con;
 	if (isset($_GET['jaun_id'])) {
 		$id = $_GET['jaun_id'];
 	}
-	$get_ierakstus = "SELECT * FROM jaunumi WHERE jaun_id = '$id' ORDER by 1 DESC LIMIT 5";
+	$get_ierakstus = "SELECT * FROM jaunumi WHERE jaun_id = '$id'";
 	 
 	$run_ieraksti = mysqli_query($con, $get_ierakstus);
 
@@ -296,10 +292,7 @@ function ievietotJaunumus(){
 		$saturs = $rindas_ieraksts['jaun_saturs'];
 		$date = $rindas_ieraksts['jaun_datums'];
 		$admin_id = $rindas_ieraksts['admin_id'];
-	
 		
-
-
 
 		//Saņem to adminu, kurš ir pievienojis ierakstu
 		$admin = "SELECT * FROM administratori WHERE admin_id='$admin_id'"; 
@@ -308,17 +301,18 @@ function ievietotJaunumus(){
 		$rinda_admin = mysqli_fetch_array($palaist_admin);
 		$lietotajvards = $rinda_admin['admin_lietotajvards'];
 		
-		
 
 		//Parāda visus ierakstus reizē
-	echo "<div id='user_profile'>
+		echo "<div id='user_profile'>
 				
 				
 					</div>
 				";
 		
 	}
-		//include("izdzest_ierakstu.php");
+		include("izdzest_ierakstu.php");
 	}
+
+	
 	
 ?>

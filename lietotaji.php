@@ -3,7 +3,7 @@ session_start();
 include("Include/connection.php");
 include("Funkcijas/funkcijas.php");
 
-
+ 
 if (!isset($_SESSION['epasts'])) {
 
 header("location: index.php");
@@ -96,14 +96,27 @@ else
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
 				<div id="content_timeline">
-					<form action="home.php?lietotaja_id=<?php echo $lietotaja_id;?>" method="post" id="f">
-					<h2>Kas Tev prātā?</h2>
-					<textarea cols="83" rows="4" name="saturs" placeholder=" Pievienot ierakstu..."></textarea><br/>
-					<input type="submit" name="sub" value="Pievienot"/>
-					</form>
-					<?php ievietotIerakstu();?>
-						<h3> Ko citi runā?</h3> 
-						<?php sanemtIerakstus();?>
+						<h3>Lietotāji:</h3> 
+					<?php 
+
+					$get_lietotaji = "SELECT * FROM lietotaji";
+					$run_lietotaji = mysqli_query($con, $get_lietotaji);
+
+					while ($rinda = mysqli_fetch_array($run_lietotaji)) {
+						$lietotaja_id = $rinda1['id']; 
+					$vards = $rinda1['vards'];
+					$uzvards = $rinda1['uzvards'];
+					$lietotaj_vards = $rinda1['lietotajvards'];
+					$lietotaja_bilde = $rinda1['lietotaja_bilde'];
+					$registresanas_d = $rinda1['reg_datums'];
+					$pedeja_sesija = $rinda1['pedeja_sesija'];
+					
+					echo "
+						<center>
+						<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='200' height='200'/>
+					";
+					}
+					?>
 				</div>
 				<!--Content timeline ends-->
 			</div>

@@ -62,12 +62,14 @@
 							<input type="date" name="dz_diena"/>
 							</td>
 						</tr>
+					
 						
 						<tr>
 							<td colspan="6">
 							<button name="reg">Reģistrēties</button>
 							</td>
 						</tr>
+					
 					</table>
 				</form>
 				
