@@ -249,32 +249,138 @@ function lietotajaProfils(){
 		//echo "</div>";
 	}
 
-function echoKek(){
-if(isset($_GET['id'])){
-				
-				global $con;
-				
-				$lietotaja_id = $_GET['id']; 
-				
-				$select = "SELECT * FROM lietotaji WHERE id='$lietotaja_id'";
-				$run = mysqli_query($con, $select); 
-				$row=mysqli_fetch_array($run);
-				
-				$id = $row['id'];
-				$name = $row['vards'];
-				
 
-	echo "<div id='user_profile'>
-					
-					<p><strong>Vārds:</strong>  </p><br/>
-					
-					</div>
-				";
 
+
+
+function ievietotJaunumus(){
+
+	if(isset($_POST['kek'])){
+		global $con;
+		$nosaukums = addslashes($_POST['nosaukums1']);
+		$autors = addslashes($_POST['autors1']);
+		$saturs = addslashes($_POST['saturs1']);
+		if ($saturs == "") {
+		echo "<h2>Lūdzu aizpildi lauku!</h2>";
+		}
+		else
+		{
+
+		$ievietot = "INSERT INTO jaunumi (jaun_id, cat_id, jaun_nosaukums, jaun_autors, jaun_saturs) VALUES ('', '', '$nosaukums', '$autors', '$saturs')";
+
+		$run = mysqli_query($con, $ievietot);
+		}
+	}
 }
-}
+
+function sanemtJaunumus(){
+	
+	global $con;
+		
+	$uz_lapu = 5;
+	
+	if (isset($_GET['page'])) {
+	$lapa = $_GET['page'];
+	}
+	else {
+	$lapa = 1;
+	}
+	$sakt_no = ($lapa - 1) * $uz_lapu;
+	
+	$get_ierakstus = "SELECT * FROM ieraksti ORDER by 1 DESC LIMIT $sakt_no, $uz_lapu";
+	
+	$run_ieraksti = mysqli_query($con, $get_ierakstus);
+
+
+	
+	while($rindas_ieraksts=mysqli_fetch_array($run_ieraksti)){
+	
+		$ieraksta_id = $rindas_ieraksts['ieraksta_id'];
+		$lietotaja_id = $rindas_ieraksts['lietotaja_id'];
+		$saturs = $rindas_ieraksts['ieraksta_saturs'];
+		$ieraksta_datums = $rindas_ieraksts['ieraksta_datums'];
+		
 
 
 
+		//Saņem to lietotāju, kurš ir pievienojis ierakstu
+		$lietotajs = "SELECT * FROM lietotaji WHERE id='$lietotaja_id' AND posts='yes'"; 
+		
+		$palaist_lietotaju = mysqli_query($con, $lietotajs); 
+		$rinda_lietotajs = mysqli_fetch_array($palaist_lietotaju);
+		$lietotajvards = $rinda_lietotajs['lietotajvards'];
+		$lietotaja_bilde = $rinda_lietotajs['lietotaja_bilde'];
+		
 
+		//Parāda visus ierakstus reizē
+		echo "<div id='posts'>
+		<div id='prof'>
+		<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='50' height='50'/>
+		<br>
+		<h3><a href='lietotaja_profils.php?id = $lietotaja_id'>$lietotajvards</a></h3>
+		<p>$ieraksta_datums</p>
+		</div>
+		<div id='saturam'><p>$saturs</p></div>
+		<div id='poga'>
+		<a href='single.php?ieraksta_id=$ieraksta_id'><button> Komentēt</button></a>
+		
+		</div>
+		</div><br/>
+		";
+		
+	}
+	include("pagination.php");
+
+	}
+	function adminaIeraksti(){
+	
+	global $con;
+	if (isset($_GET['id'])) {
+		$id = $_GET['id'];
+	}
+	$get_ierakstus = "SELECT * FROM ieraksti WHERE lietotaja_id = '$id' ORDER by 1 DESC LIMIT 5";
+	 
+	$run_ieraksti = mysqli_query($con, $get_ierakstus);
+
+
+	
+	while($rindas_ieraksts=mysqli_fetch_array($run_ieraksti)){
+	
+		$ieraksta_id = $rindas_ieraksts['ieraksta_id'];
+		$lietotaja_id = $rindas_ieraksts['lietotaja_id'];
+		$saturs = $rindas_ieraksts['ieraksta_saturs'];
+		$ieraksta_datums = $rindas_ieraksts['ieraksta_datums'];
+		
+
+
+
+		//Saņem to lietotāju, kurš ir pievienojis ierakstu
+		$lietotajs = "SELECT * FROM lietotaji WHERE id='$lietotaja_id' AND posts='yes'"; 
+		
+		$palaist_lietotaju = mysqli_query($con, $lietotajs); 
+		$rinda_lietotajs = mysqli_fetch_array($palaist_lietotaju);
+		$lietotajvards = $rinda_lietotajs['lietotajvards'];
+		$lietotaja_bilde = $rinda_lietotajs['lietotaja_bilde'];
+		
+
+		//Parāda visus ierakstus reizē
+		echo "<div id='posts'>
+		<div id='prof'>
+		<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='50' height='50'/>
+		<br>
+		<h3><a href='lietotaja_profils.php?id = $lietotaja_id'>$lietotajvards</a></h3>
+		<p>$ieraksta_datums</p>
+		</div>
+		<div id='saturam'><p>$saturs</p></div>
+		<div id='poga'>
+		<a href='single.php?ieraksta_id=$ieraksta_id'><button> Skatīt</button></a>
+		<a href='rediget_ierakstu.php?ieraksta_id=$ieraksta_id'><button> Rediģēt</button></a>
+		<a href='Funkcijas/izdzest_ierakstu.php?ieraksta_id=$ieraksta_id'><button>Dzēst</button></a>
+		</div>
+		</div><br/>
+		";
+		
+	}
+		include("izdzest_ierakstu.php");
+	}
 ?>

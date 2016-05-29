@@ -96,14 +96,7 @@ else
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
 				<div id="content_timeline">
-					<form action="home.php?id=<?php echo $lietotaja_id;?>" method="post" id="f">
-					<h2>Kas Tev prātā?</h2>
-					<textarea cols="83" rows="4" name="saturs" placeholder=" Pievienot ierakstu..."></textarea><br/>
-					<input type="submit" name="sub" value="Pievienot"/>
-					</form>
-					<?php ievietotIerakstu();?>
-						<h3> Ko citi runā?</h3> 
-						<?php sanemtIerakstus();?>
+					<?php  echo getJaunumi(); ?> 
 				</div>
 				<!--Content timeline ends-->
 			</div>

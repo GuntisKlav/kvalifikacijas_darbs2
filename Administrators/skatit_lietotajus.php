@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include("../Funkcijas/funkcijas.php");
 if (!isset($_SESSION['admin_lietotajvards'])) {
 	header("location: admin_login.php");
 }
@@ -12,6 +13,7 @@ if (!isset($_SESSION['admin_lietotajvards'])) {
 	<link rel="stylesheet" type="text/css" href="AdminStyle/sessionStyle.css">
 </head>
 <body>
+<div id=header1></div>
 <div id="konteineris">
 <br>
 <center><h1 id="virsraksts">Visa lietotāju informācija</h1></center>
@@ -60,5 +62,25 @@ while ($row = mysqli_fetch_array($palaist)) {
 </table></center>
 </div>
 </div>
+<br><br><br>
+<center><div id="timeline"></dcenter>
+<div id="content_timeline">
+
+
+					<form action="skatit_lietotajus.php?id=<?php echo $lietotaja_id;?>" method="post" id="f">
+					<h2>Kas Tev prātā?</h2><br>
+					<textarea cols="83" rows="1" name="autors1" placeholder=" Autors..."></textarea><br>
+
+					<textarea cols="83" rows="1" name="nosaukums1" placeholder=" Nosaukums..."></textarea><br>
+
+					<textarea cols="83" rows="4" name="saturs1" placeholder=" Pievienot ierakstu..."></textarea><br/>
+
+					<input type="submit" name="kek" value="Pievienot"/>
+					</form>
+					<?php ievietotJaunumus();?>
+
+
+				</div>
+				</div>
 </body>
 </html>
