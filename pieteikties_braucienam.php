@@ -8,7 +8,7 @@ if (!isset($_SESSION['epasts'])) {
 
 header("location: index.php");
 
-}
+} 
 else
 {
 ?>
@@ -51,25 +51,31 @@ else
 						<tr>
 							<td align="right"></td>
 							<td>
-							<input type="text" name="vards" placeholder=" Tavs vārds" required="required"/>
+							<input type="text" name="br_vards" placeholder=" Tavs vārds" required="required"/>
 							</td>
 						</tr>
 			 			<tr>
 							<td align="right"></td>
 							<td>
-							<input type="text" name="vards" placeholder=" Tavs uzvārds" required="required"/>
+							<input type="text" name="br_uzvards" placeholder=" Tavs uzvārds" required="required"/>
 							</td>
 						</tr>
 						<tr>
 							<td align="right"></td>
 							<td>
-							<input type="text" name="vards" placeholder=" Tavs telefona numurs" required="required"/>
+							<input type="text" name="tel_nr" placeholder=" Tavs telefona numurs" required="required"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td>
+							<input type="text" name="br_epasts" placeholder=" Tavs epasts" required="required"/>
 							</td>
 						</tr>
 						<tr>
 							<td align="right" required="required"></td>
 							<td>
-							<select name="dzimums">
+							<select name="vecums">
 								<option>Tavs vecums</option>
 								<option>14</option>
 								<option>15</option>
@@ -121,23 +127,25 @@ else
 						<tr>
 							<td align="right" required="required"></td>
 							<td>
-							<select name="dzimums">
+							<select name="prasmes">
 								<option>Prasmju līmenis</option>
 								<option>Iesācējs</option>
 								<option>Vidējs</option>
 								<option>Profesionālis</option>
-								
 							</select>
 							</td>
 						</tr>
 						
 						<tr>
 							<td colspan="6">
-							<button name="reg">Reģistrēties</button>
+							<button name="piet">Pieteikties</button>
 							</td>
 						</tr>
 					</table>
 				</form>
+				<?php   
+		       include("brauciena_pievienosana.php");
+				?>
 	</div>
 	<!--Container ends-->
 </body>
