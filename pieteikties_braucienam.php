@@ -2,7 +2,7 @@
 session_start();
 include("Include/connection.php");
 include("Funkcijas/funkcijas.php");
-
+ 
 
 if (!isset($_SESSION['epasts'])) {
 
@@ -16,6 +16,7 @@ else
 <html>
 <head>
 	<title>Laipni lūgts!</title>
+	
 	<link rel="stylesheet" href="Stils/home_style.css" media="all"/>
 </head>
 
@@ -33,49 +34,29 @@ else
 				<ul id="menu">
 					<li><a href="home.php">Sākums</a></li>
 				<li><a href="lietotaji.php">Lietotāji</a></li>
-					<li><a href="#">Galerijas</a></li>
 					<li><a href="jaunumi.php">Jaunumi</a>
 					<li><a href="pieteikties_braucienam.php">Pieteikties braucienam</a></li>
 				</ul>
-				<form method="get" action="results.php" id="form1">
-					<input type="text" name="user_query" placeholder=" Meklēšana..."/> 
-					<input type="submit" name="search" value="Meklēt"/>
-				</form>
+			
 			</div>
 			<!--Header ends-->
 		</div>
 		<!--Header Wrapper ends-->
-			
+			<div id="braucieni">
 		<form action="" method="POST">
-					<table id="braucieni"> 
-						<tr>
-							<td align="right"></td>
-							<td>
+		<div id="header4">
+		<center><h1>   Piesakies uz tuvāko braucienu!</h1></center>
+		</div>
+		<br>
 							<input type="text" name="br_vards" placeholder=" Tavs vārds" required="required"/>
-							</td>
-						</tr>
-			 			<tr>
-							<td align="right"></td>
-							<td>
-							<input type="text" name="br_uzvards" placeholder=" Tavs uzvārds" required="required"/>
-							</td>
-						</tr>
-						<tr>
-							<td align="right"></td>
-							<td>
-							<input type="text" name="tel_nr" placeholder=" Tavs telefona numurs" required="required"/>
-							</td>
-						</tr>
-						<tr>
-							<td align="right"></td>
-							<td>
-							<input type="text" name="br_epasts" placeholder=" Tavs epasts" required="required"/>
-							</td>
-						</tr>
-						<tr>
-							<td align="right" required="required"></td>
-							<td>
-							<select name="vecums">
+			
+							<input type="text" name="br_uzvards" placeholder=" Tavs uzvārds" required="required"/><br><br>
+							
+							<input type="text" name="tel_nr" placeholder=" Tavs telefona numurs" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required="required"/>
+							
+							<input type="email" name="br_epasts" placeholder=" TavsEpasts@epasts.lv" required="required"/><br><br>
+							
+							<select name="vecums" id="vecums">
 								<option>Tavs vecums</option>
 								<option>14</option>
 								<option>15</option>
@@ -122,26 +103,24 @@ else
 							    <option>56</option>
 							    <option>57</option>	
 							</select>
-							</td>
-						</tr>
-						<tr>
-							<td align="right" required="required"></td>
-							<td>
+							 
 							<select name="prasmes">
 								<option>Prasmju līmenis</option>
 								<option>Iesācējs</option>
 								<option>Vidējs</option>
 								<option>Profesionālis</option>
 							</select>
-							</td>
-						</tr>
-						
-						<tr>
-							<td colspan="6">
-							<button name="piet">Pieteikties</button>
-							</td>
-						</tr>
-					</table>
+
+							<select name="noma">
+							<option>Inventāra noma</option>
+								<option>Jā</option>
+								<option>Nē</option>
+							</select>
+							<textarea id="komentari1" name="komentari"> </textarea>
+							<button name="piete">Pieteikties</button>
+
+							</div>
+
 				</form>
 				<?php   
 		       include("brauciena_pievienosana.php");

@@ -10,6 +10,7 @@ include("login.php");
 <html>
 <head>
 	<title>Mountain Maniacs</title>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href=Stils/style.css media="all">
 </head>
 

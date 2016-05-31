@@ -4,10 +4,11 @@ include("../Funkcijas/funkcijas.php");
 if (!isset($_SESSION['admin_lietotajvards'])) { 
 	header("location: admin_login.php");
 }
-?> 
+?>  
 <!DOCTYPE html>
 <html>
 <head>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 	<title>Skatīt visus ierakstus</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="AdminStyle/sessionStyle.css">
@@ -17,6 +18,7 @@ if (!isset($_SESSION['admin_lietotajvards'])) {
 <nav id="nav">
 	<ul>
 		<li><a href="skatit_lietotajus.php">Lietotāji</a></li>
+		<li><a href="admin_pieteikumi.php">Pieteikumi</a></li>
 		<li><a href="jaunumi.php">Jaunumi</a></li>
 		<li><a href="logout.php">Iziet</a></li>
 	</ul>
@@ -45,7 +47,7 @@ if (!isset($_SESSION['admin_lietotajvards'])) {
 <br>
 <br>
 <div id="tabula">
-<center><table id="table1" width='800' align='center' border='2'>
+<center><table id="table" width='800' align='center' border='2'>
 <tr bgcolor='yellow'>
 <th>Ieraksta ID</th>
 <th>Temats</th>

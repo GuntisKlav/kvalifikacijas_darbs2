@@ -16,6 +16,7 @@ else
 <html>
 <head>
 	<title>Laipni lūgts!</title>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="Stils/home_style.css" media="all"/>
 </head>
 
@@ -33,15 +34,12 @@ else
 				<ul id="menu">
 					<li><a href="home.php">Sākums</a></li>
 					<li><a href="lietotaji.php">Lietotāji</a></li>
-					<li><a href="#">Galerijas</a></li>
+					
 					<li><a href="jaunumi.php">Jaunumi</a>
 					<li><a href="pieteikties_braucienam.php">Pieteikties braucienam</a></li>
 					
 				</ul>
-				<form method="get" action="results.php" id="form1">
-					<input type="text" name="user_query" placeholder=" Meklēšana..."/> 
-					<input type="submit" name="search" value="Meklēt"/>
-				</form>
+				
 			</div>
 			<!--Header ends-->
 		</div>
@@ -69,25 +67,24 @@ else
 					$run_ieraksti = mysqli_query($con, $lietotaja_zinojumi); 
 					$ieraksti = mysqli_num_rows($run_ieraksti);
 					
-					//getting the number of unread messages 
-					//$sel_msg = "SELECT * FROM zinojumi WHERE sanemejs='$id' AND statuss='nelasita' ORDER by 1 DESC"; 
-					//$run_msg = mysqli_query($con,$sel_msg);		
+					 
+					$sel_msg = "SELECT * FROM zinas WHERE sanemejs='$lietotaja_id' AND statuss='nelasita' ORDER by 1 DESC"; 
+					$run_msg = mysqli_query($con,$sel_msg);		
 		
-					//$count_msg = mysqli_num_rows($run_msg);
+					$count_msg = mysqli_num_rows($run_msg);
 					
 					
 					echo "
+						<h1 id='liett'>Sveiks, <strong>$lietotaj_vards</strong></h1>
 						<center>
-						<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='200' height='200'/>
+						<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='300' height='200'/>
 						</center>
 							<p><strong>Vārds:</strong> $vards $uzvards</p>
-
-						<p><strong>Lietotājvārds:</strong> $lietotaj_vards</p>
 						<p><strong>Pēdējo reizi manīts:</strong> $pedeja_sesija</p>
 						<p><strong>Konts izveidots:</strong> $registresanas_d</p>
-					<p><a href=''manas_zinas.php'>Ziņojumi</a></p>
-					<p><a href=''mani_zinojumi.php'>Mani ieraksti ($ieraksti)</a></p>
-					<p><a href=''iestatijumi.php'>Iestatījumi</a></p>
+					<p><a href='manas_zinas.php?inbox&id=$lietotaja_id'>Ziņojumi($count_msg)</a></p>
+					<p><a href='mani_zinojumi.php?id=$lietotaja_id'>Mani ieraksti($ieraksti)</a></p>
+					<p><a href='rediget_profilu.php?id=$lietotaja_id'>Profila iestatījumi</a></p>
 						<p><a href='logout.php'>Iziet</a></p>
 					";
 					?>

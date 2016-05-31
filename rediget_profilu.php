@@ -16,6 +16,7 @@ else
 <html>
 <head>
 	<title>Laipni lūgts!</title>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="Stils/home_style.css" media="all"/>
 	<style>
 	input[type='file']{width:180px;}
@@ -36,15 +37,11 @@ else
 				<ul id="menu">
 					<li><a href="home.php">Sākums</a></li>
 					<li><a href="lietotaji.php">Lietotāji</a></li>
-					<li><a href="#">Galerijas</a></li>
 					<li><a href="jaunumi.php">Jaunumi</a>
 					<li><a href="pieteikties_braucienam.php">Pieteikties braucienam</a></li>
 					
 				</ul>
-				<form method="get" action="results.php" id="form1">
-					<input type="text" name="user_query" placeholder=" Meklēšana..."/> 
-					<input type="submit" name="search" value="Meklēt"/>
-				</form>
+			
 			</div>
 			<!--Header ends-->
 		</div>
@@ -74,25 +71,24 @@ else
 					$run_ieraksti = mysqli_query($con, $lietotaja_zinojumi); 
 					$ieraksti = mysqli_num_rows($run_ieraksti);
 					
-					//getting the number of unread messages 
-					//$sel_msg = "SELECT * FROM zinojumi WHERE sanemejs='$id' AND statuss='nelasita' ORDER by 1 DESC"; 
-					//$run_msg = mysqli_query($con,$sel_msg);		
+					 
+					$sel_msg = "SELECT * FROM zinas WHERE sanemejs='$lietotaja_id' AND statuss='nelasita' ORDER by 1 DESC"; 
+					$run_msg = mysqli_query($con, $sel_msg);		
 		
-					//$count_msg = mysqli_num_rows($run_msg);
+					$count_msg = mysqli_num_rows($run_msg);
 					
 					
 					echo "
+						<h1 id='liett'>Sveiks, <strong>$lietotaj_vards</strong></h1>
 						<center>
-						<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='200' height='200'/>
+						<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='300' height='200'/>
 						</center>
 							<p><strong>Vārds:</strong> $vards $uzvards</p>
-
-						<p><strong>Lietotājvārds:</strong> $lietotaj_vards</p>
 						<p><strong>Pēdējo reizi manīts:</strong> $pedeja_sesija</p>
 						<p><strong>Konts izveidots:</strong> $registresanas_d</p>
-					<p><a href='manas_zinas.php?inbox&id=$lietotaja_id'>Ziņojumi ()</a></p>
-					<p><a href='mani_zinojumi.php?id=$lietotaja_id'>Mani ieraksti ($ieraksti)</a></p>
-					<p><a href='edit_profile.php?id=$lietotaja_id'>Profila iestatījumi</a></p>
+					<p><a href='manas_zinas.php?inbox&id=$lietotaja_id'>Ziņojumi($count_msg)</a></p>
+					<p><a href='mani_zinojumi.php?id=$lietotaja_id'>Mani ieraksti($ieraksti)</a></p>
+					<p><a href='rediget_profilu.php?id=$lietotaja_id'>Profila iestatījumi</a></p>
 						<p><a href='logout.php'>Iziet</a></p>
 					";
 					?>
@@ -154,13 +150,15 @@ else
 						<tr>
 							<td align="right">Profila bilde: </td>
 							<td>
-					<input type="file" name="liet_bilde" required="required"/>
+
+	<input type="file" name="liet_bilde" required="required"/>
 							</td>
 						</tr>
 						
 						<tr>
 							<td colspan="6">
-						<input type="submit" name="atjaunot" value="Saglabāt"> 
+
+	<input type="submit" name="atjaunot" value="Saglabāt"> 
 							</td>
 						</tr>
 					</table>
@@ -168,18 +166,18 @@ else
 				<?php 
 if (isset($_POST['atjaunot'])) {
 	
-$vards_ = $_POST['vards'];
-$uzvards_ = $_POST['uzvards'];
-$lietotajvards_ = $_POST['lietotajvards'];
-$parole_ = $_POST['parole'];
-$epasts_ = $_POST['epasts1'];
+$vards1 = $_POST['vards'];
+$uzvards1 = $_POST['uzvards'];
+$lietotajvards1 = $_POST['lietotajvards'];
+$parole1 = $_POST['parole'];
+$epasts1 = $_POST['epasts1'];
 //$dzimums_ = $_POST['dzimums'];
-$bilde_ = $_FILES['liet_bilde']['name'];
-$profila_bilde_ = $_FILES['liet_bilde']['tmp_name'];
+$u_image = $_FILES['liet_bilde']['name'];
+		$image_tmp = $_FILES['liet_bilde']['tmp_name'];
 
-move_uploaded_file($profila_bilde_, '../Lietotāji/Lietotaja_bildes/');
+copy($image_tmp,'Lietotājs/Lietotaja_bildes/$u_image');
 
-$atjaunot = "UPDATE lietotaji SET vards = '$vards_', uzvards = '$uzvards_', lietotajvards = '$lietotajvards_', parole = '$parole_', epasts = $epasts_, lietotaja_bilde = '$bilde_' WHERE id = '$lietotaja_id'";
+$atjaunot = "UPDATE lietotaji SET vards = '$vards1', uzvards = '$uzvards1', lietotajvards = '$lietotajvards1', parole = '$parole1', epasts = $epasts1, lietotaja_bilde = '$u_image' WHERE id = '$lietotaja_id'";
 $palaist = mysqli_query($con, $atjaunot);
  if ($palaist) {
  	echo "<script>alert('Izmaiņs saglabātas')</script>";
@@ -190,7 +188,8 @@ $palaist = mysqli_query($con, $atjaunot);
 
 
 				?> 
-						
+					
+			
 				
 				</div>
 				<!--Content timeline ends-->

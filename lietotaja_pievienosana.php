@@ -32,7 +32,7 @@ else{
 
 	if ($palaist_ievietosanu) {
 		$_SESSION['epasts']=$epasts_;
-	echo "<script>alert('Reģistrācja veiksmīga!'')</script>";
+	echo "<script>alert('Reģistrācja veiksmīga!)</script>";
 		}
 }
 }

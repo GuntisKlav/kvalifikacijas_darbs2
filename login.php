@@ -21,7 +21,7 @@
 		
 		}
 			else {
-			//echo "<script>alert('Passowrd or email is not correct!')</script>";
+			echo "<script>alert('Passowrd or email is not correct!')</script>";
 		}
 		
 		}

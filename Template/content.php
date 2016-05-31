@@ -1,28 +1,19 @@
 <!--Content area starts-->
 
 		<div id="content">
-		<div id="parMM">
-		<br>
-		<center><h1>Par Mountain Maniacs</h1><center><br>
-		<div id="text">
-			<p>
-			"Mountain Maniacs" ir divu jauniešu izveidota kopiena, kurā visi ir kā viena liela ģimene. Šīs grupas pirmsākumi meklējami 2013. gadā, kad sezonas vidū Edgars un Frederiks nolēma dibināt ko aizraujošu. Sasaucot sev pazīstamos kalnu mīlētājus tika veidots pirmais brauciens 2013. gada 6. februārī. Mūsu skatījumā tas bija aizraujošs un katram no tā ir savas patīkamās atmiņas, tā mēs turpinājām to darīt un ar katru gadu augam un augam. Pirmais brauciens tika aizvadīts 21 cilvēka kompānijā, toties lielākais brauciens sastāvēja no 73 ziemas mīlētājiem. "Mountain Maniacs" ir vieta, kur satiekas iesācēji, viduvēja un laba līmeņa braucēji. Vienmēr viens otru pamācīs, tāpēc nevajag baidīties, ja neko daudz par snovošanu/slēpošanu nezini. Nekautrējies un pievienojies!
-			</p>
-		</div> 
-		</div>
 			<div id="form2">
 				<form action="" method="POST">
 					<table> 
 						<tr>
 							<td align="right"></td>
 							<td>
-							<input type="text" name="vards" placeholder=" Ievadi savu vārdu" required="required"/>
+							<input type="text" id="vards" name="vards" placeholder=" Ievadi savu vārdu" required="required"/>
 							</td>
 						</tr>
 						<tr>
 							<td align="right"></td>
 							<td>
-							<input type="text" name="uzvards" placeholder=" Ievadi savu uzvārdu" required="required"/>
+							<input type="text" id="uzvards" name="uzvards" placeholder=" Ievadi savu uzvārdu" required="required"/>
 							</td>
 						</tr>
 						<tr>

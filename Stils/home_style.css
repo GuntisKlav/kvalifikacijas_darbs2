@@ -3,8 +3,8 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
+b, u, i, center, 
+dl, dt, dd, ol, ul, li, 
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
@@ -20,16 +20,32 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+body, html{
+	font-family: 'PT Sans Narrow', sans-serif;
+	min-height: 100%;
+}
 body {
 	line-height: 1;
-	background-color:#D8D8D8;
+	background-image: url('../Bildes/6.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: 'PT Sans Narrow', sans-serif;
 }
 
 .container {
 	margin:0; 
 	padding:0; 
-	background-color:#E6E6FA;
+	
 }
+#replyid{
+	background-color: white;
+	padding: 5px;
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 5px;
+}
+
 #head_wrap{
 	width:100%; 
 	height:50px;
@@ -55,19 +71,22 @@ body {
 }
 
 #menu li {
+
 	display:inline; 
 	list-style:none;
 	text-decoration: none;
 }
 #menu a {
+
 	margin:5px; 
-	padding:5px; 
+	padding:10px; 
 	text-decoration:none;
 	color:#D8D8D8; 
 	font-size:20px;
 	font-weight:bold;
 }
 #menu a:hover{
+	
 	color:#FFFFFF; 
 	font-weight:bolder;
 
@@ -84,55 +103,74 @@ body {
 }
 
 .content {
-	width:1000px; 
+	width:1400px; 
 	margin:0 auto;
+
 }
 #user_timeline {
-	background:#AFEEEE;
-	width:250px; 
+	font-family: 'PT Sans Narrow', sans-serif;
+margin-left: 130px;
+	background: white;
+	border-radius: 10px;
+	margin-top: 30px;
+	width:350px; 
 	float:left; 
-	height:600px;
-	border-right:1px solid black;
+	height:570px;
+	box-shadow: 0px 0px 20px;
 }
 #user_details {
-	padding:10px; 
+	font-family: 'PT Sans Narrow', sans-serif;
+	padding:20px; 
 }
 #user_details img{
-	border:2px solid black; 
-	border-radius:20px; 
+	border:1px solid black;
+	border-radius: 3px; 
+
 }
 #user_details p {
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 18px;
 	margin-bottom:10px;
-	padding:5px;
+	padding:5px; 
 }
 #user_details a {
+	
 	color:brown; 
-	font-size:20px; 
+	font-size:22px; 
 	text-decoration:none;
+	font-family:Sansational; 
 }
 #user_details a:hover {
+	transition: 0.4s;
 	color:black; 
-	font-size:20px; 
-	text-decoration:underline; 
+	font-size:24px;  
 	font-weight:bolder;
 }
 #user_mention{
 	background:#E6E6FA;
 	border:2px solid black; 
-	border-radius:20px; 
+	border-radius:40px; 
 	width:200px;
 	margin:0 auto;
 	padding:5px;
 }
 #content_timeline {
+	margin-right: 130px;
+border-radius: 9px;
+margin-top: 30px;
+	background: white;
 	float:right;
 	width:700px; 
+	height: auto;
 	padding:10px;
+	box-shadow: 0px 0px 20px;
 }
 .ff input {margin-bottom:5px;}
 .ff select {margin-bottom:5px;}
 
 #f input{
+	float: right;
+	margin-right: 100px;
 	padding:7px; 
 	border:1px solid black; 
 	border-radius:5px;
@@ -140,7 +178,7 @@ body {
 }
 #f textarea{
 	padding:8px; 
-	border:1px solid black; 
+	border:1px solid grey; 
 	border-radius:5px;
 	font-weight:bolder;
 }
@@ -160,8 +198,10 @@ body {
 	background:#FFF8DC;
 }
 #f h2 {
-	color:gray; 
+	color:grey; 
 	font-family:Sansational;
+	margin-bottom: 6px;
+	margin-left: 3px;
 }
 
 #pagination {
@@ -175,7 +215,6 @@ body {
 	margin:5px;
 }
 #pagination a:hover{
-	color:brown; 
 	font-weight:bold;
 }
 
@@ -183,13 +222,67 @@ body {
 #prof{
 	width: 100%;
 	height: 63px;
-	background: green;
+	
+}
+#liett{
+	font: 30px League, Gothic, Regular;
+}
+#comlaiks{
+	text-decoration: none;
+	border:1px solid silver;
+	width: 350px;
+	float: right;
+	margin-right: 10px;
+	margin-top: 
+}
+#comlaiks1{
+	padding: 10px;
+	border:1px solid silver;
+	width: 600px;
+	float: right;
+	margin-right: 14px; 
+}
+
+#auto{
+	height: 30px;
+	margin-left: 5px;
+	padding: 10px;
+	border:1px solid silver;
+	width: 600px;
+	float: right;
+	margin-right: 14px;
+	margin-bottom: 7px;
+}
+#auto h1{
+color:grey; 
+	font-family:Sansational;
 }
 #saturam{
-	margin-right: 3px;
-	width: 100%;
+	font: 30px League, Gothic, Regular;
+	padding: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 5px;
+	width: 400px;
+	margin: 0 auto;
 	height: auto;
-	background: blue;
+	background: white;
+	border-radius: 3px;
+	border: 1px solid silver;
+
+}
+#saturam1{
+	font: 30px League, Gothic, Regular;
+	padding: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 5px;
+	width: 600px;
+	margin: 0 auto;
+	height: auto;
+	background: white;
+	border-radius: 3px;
+	border: 1px solid silver;
 
 }
 #poga{
@@ -197,14 +290,25 @@ body {
 	height: 38px;
 }
 #posts {
+	padding: 5px;
 	border-radius: 3px;
 	width:440px; 
 	height: auto;
-	background:gold; 
-
+	background:#CEE3F6;
 	margin: 20px;
 	line-height:15px;
-	border:2px solid black;
+	border:1px solid black;
+	text-align:justify;
+}
+#posts1 {
+	padding: 5px;
+	border-radius: 3px;
+	width:650px; 
+	height: auto;
+	background:#CEE3F6;
+	margin: 20px;
+	line-height:15px;
+	border:1px solid black;
 	text-align:justify;
 }
 #posts img {
@@ -249,7 +353,7 @@ margin-right: 5px;
 	background:#F5F5DC;
 }
 #komentars {
-	background:red;
+	background:#F6CED8;
 	padding:5px;
 	width:400px;
 	border-bottom:2px solid #F0FFF0;
@@ -275,7 +379,7 @@ margin-right: 5px;
 	border-radius:10px;
 }
 #user_profile img {
-	border:2px solid gray; 
+	border:2px solid grey; 
 	float:right;
 }
 #user_profile p{margin:5px;}
@@ -283,10 +387,16 @@ margin-right: 5px;
 #user_profile h3 { color:blue;}
 
 #msg {
+	margin-top: 30px;
+	margin-right: 130px;
+	width: auto;
+	height: auto;
+	float: right;
 	padding:10px; 
 	line-height:20px; 
-	background:pink; 
-	margin:0 auto;
+	background:white; 
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px;
 }
 #msg th {
 	border:3px solid green;
@@ -303,9 +413,7 @@ margin-right: 5px;
 	font-size:18px; 
 }
 #msg a:hover{
-	color:brown;
 	font-weight:bolder;
-	text-decoration:underline;
 }
 #footer{
 	width:100%; 
@@ -322,10 +430,106 @@ margin-right: 5px;
 	color:white;
 
 }
+#header4{
+	margin-right: auto;
+	margin-left: auto;
+	border-bottom: 1px solid silver;
+}
 
 #braucieni{
+	padding: 30px;
+	width: 500px;
+	height: auto;
 	margin-top: 100px;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: gold;
+	background-color: white;
+	box-shadow: 0px 0px 20px;
+	border-radius: 10px;
 }
+ 
+ #braucieni input{
+ 	margin-top: 10px;
+ 	margin-left: 30px;
+ 	font-size: 17px;
+ 	border-radius: 4px;
+ 	height: 40px;
+ 	width: 200px;
+ }
+
+ #braucieni select{
+ 	padding: 10px;
+ 	margin-top: 10px;
+
+ 	width: 144px;
+ 	height: 40px;
+ }
+ #braucieni textarea{
+ 	width: 420px;
+ 	height: auto;
+ 	padding: 10px;
+ 	margin-left: 30px;
+ }
+
+ #braucieni button{
+ 	width: 120px;
+ 	height: 40px;
+ 	margin-left: 30px;
+ 	margin-top: 10px;
+ }
+ #braucieni h3{
+ 	margin-top: 20px;
+ 	margin-left: 35px;
+ }
+ 
+ #lietot{
+ 	text-decoration: none;
+ 	border-radius: 3px;
+ 	margin-bottom: 5px;
+ 	padding: 5px;
+ 	background: #BDBDBD;
+ 	border-radius: 3px;
+ 	height: 100px;
+ 	width: 142px;
+ 	padding-bottom: 30px;
+ }
+ #lietot h3{
+ 	color: black;
+ }
+#vecums{
+	margin-left: 30px;
+}
+ #pic{
+ 	border: 1px solid black;
+ }
+
+ #zinojumi{
+ 	width: 100%;
+ 	background-color: green;
+ }
+ #zinojumi a{
+ 	color: white;
+ 	padding: 10px;
+ }
+ #zinojumi a:hover{
+
+ }
+ #zin{
+ 	width: 700px;
+ 	border-radius: 3px;
+ }
+ }
+#zinas_nos{
+	width: 690px;
+	margin-bottom: 10px;
+}
+ }
+
+ #topkek textarea{
+ 	width: 690px;
+ 	border-radius: 3px;
+ }
+ #komentari1{
+ 	height: 100px;
+ 	margin-top: 20px;
+ }

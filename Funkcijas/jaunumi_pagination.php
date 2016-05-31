@@ -1,4 +1,4 @@
-	<?php 
+<?php 
 	$query = "SELECT * FROM ieraksti";
 	$rezultats = mysqli_query($con, $query);
 
@@ -11,17 +11,17 @@
 
 
 
-
+ 
 	//Iet uz pirmo lapu
 	echo "
 	<center>
 	<div id='pagination'>
-	<a href='home.php?lapa=1'> Pirmā lapa </a>
+	<a href='jaunumi.php?lapa1=1'> Pirmā lapa </a>
 	";
 	for ($i=1; $i<=$total_pages; $i++) {
-	echo "<a href='home.php?lapa=$i'>$i</a>";
+	echo "<a href='jaunumi.php?lapa1=$i'>$i</a>";
 	}
 	// Iet uz pedēo lapu
-	echo "<a href='home.php?lapa=$total_pages'>Pēdējā lapa</a></center></div>";
+	echo "<a href='jaunumi.php?lapa1=$total_pages'>Pēdējā lapa</a></center></div>";
 	
 	?>

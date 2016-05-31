@@ -10,7 +10,7 @@ header("location: index.php");
 
 }
 else
-{
+{ 
 ?>
 <!doctype html>
 <html>
@@ -33,12 +33,11 @@ else
 			<div id="header">
 				<ul id="menu">
 					<li><a href="home.php">Sākums</a></li>
-				<li><a href="lietotaji.php">Lietotāji</a></li>
+					<li><a href="lietotaji.php">Lietotāji</a></li>
 					<li><a href="jaunumi.php">Jaunumi</a>
 					<li><a href="pieteikties_braucienam.php">Pieteikties braucienam</a></li>
 					
 				</ul>
-				
 			</div>
 			<!--Header ends-->
 		</div>
@@ -66,6 +65,10 @@ else
 					$run_ieraksti = mysqli_query($con, $lietotaja_zinojumi); 
 					$ieraksti = mysqli_num_rows($run_ieraksti);
 					
+					$lietotaja_zinojumi = "SELECT * FROM ieraksti where lietotaja_id='$lietotaja_id'"; 
+					$run_ieraksti = mysqli_query($con, $lietotaja_zinojumi); 
+					$ieraksti = mysqli_num_rows($run_ieraksti);
+					
 					 
 					$sel_msg = "SELECT * FROM zinas WHERE sanemejs='$lietotaja_id' AND statuss='nelasita' ORDER by 1 DESC"; 
 					$run_msg = mysqli_query($con, $sel_msg);		
@@ -89,18 +92,79 @@ else
 					?>
 					</div>
 				</div>
-				<!--user timeline beidzaas-->
-				<!--Content timeline ssaakaas-->
+
+				<!--user timeline ends-->
+				<!--Content timeline starts-->
 				<div id="content_timeline">
-						<?php viensIeraksts();?>
-				</div>
-				<!--Content timeline beidzaas-->
+					
+					<?php 
+			
+			if(isset($_GET['liet_id'])){
+			
+			$u_id = $_GET['liet_id'];
+			
+			$sel = "SELECT * FROM lietotaji WHERE id ='$u_id'"; 
+			$run = mysqli_query($con,$sel); 
+			$row=mysqli_fetch_array($run); 
+			
+			$user_name = $row['lietotajvards'];
+			$user_image = $row['lietotaja_bilde'];
+			$reg_date = $row['reg_datums'];
+			}
+		
+		?>
+			
+		<h2>Sūtīt ziņu <span style='color:red;'><?php echo $user_name; ?></span></h2>
+			
+
+
+
+			<form id="topkek" action="zinas.php?liet_id=<?php echo $u_id;?>" method="post" id="f">
+				<input type="text" id="zinas_nos" name="zinas_nos" placeholder=" Temats" size="49"/><br>
+				<textarea id="zin" name="zina" cols="50" rows="5" placeholder=" Kategorija"/></textarea><br/>
+				<input type="submit" name="zinojums" value="Sūtīt ziņu"/>
+			</form><br/>
+			
+			<img style="border:2px solid blue; border-radius:5px;" src="Lietotājs/Lietotaja_bildes/<?php echo $user_image;?>" width="100" height="100"/>
+			
+			<p><strong><?php echo $user_name;?> </strong> ir aktīvs lietotājs kopš: <?php echo $reg_date;?></p>
+			
 			</div>
-			<!--Content area  beidzās-->
+			<!--Content timeline ends-->
+		<?php 
+	if(isset($_POST['zinojums'])){
+	
+		$msg_title = $_POST['zinas_nos']; 
+		$msg = $_POST['zina']; 
+		
+		$insert = "INSERT INTO zinas (sutitajs, sanemejs, zinas_kat, zinas_temats, atbilde, statuss, zinas_datums) 
+		values ('$lietotaja_id','$u_id','$msg_title','$msg','bez_atbildes','nelasīts',NOW())"; 
+		
+		$run_insert = mysqli_query($con,$insert); 
+		
+		if($run_insert){
+		echo "<script>alert('Ziņa tika nosūtīta lietotājam ". $user_name . " veiksmīgi!')</script>";
+		exit();
+
+		}
+		else {
+		
+		echo "<script>alert('Ziņa netika nosūtīta!')</script>";
+		exit();
+		}
+		
+	}
+	
+	?>
+						
+				</div>
+				<!--Content timeline ends-->
+			</div>
+			<!--Content area ends-->
 		
 	</div>
-	<!--Container beidzās-->
+	<!--Container ends-->
 </body>
-</html> 
+</html>  
 
 <?php } ?>  
