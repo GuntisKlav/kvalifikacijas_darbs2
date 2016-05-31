@@ -146,7 +146,7 @@ else
 							</select>
 							</td>
 						</tr>
-						
+						<h1></h1>
 						<tr>
 							<td align="right">Profila bilde: </td>
 							<td>
