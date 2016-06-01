@@ -93,7 +93,7 @@ else
 
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
-				<div id="content_timeline">
+				<div id="content_timeline1">
 					
 						<h3>Lietotāja informācija</h3> 
 				

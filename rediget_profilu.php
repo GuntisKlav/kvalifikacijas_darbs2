@@ -96,7 +96,7 @@ else
 				</div>
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
-				<div id="content_timeline">
+				<div id="content_timeline1">
 
 
 
@@ -175,7 +175,7 @@ $epasts1 = $_POST['epasts1'];
 $u_image = $_FILES['liet_bilde']['name'];
 		$image_tmp = $_FILES['liet_bilde']['tmp_name'];
 
-copy($image_tmp,'Lietotājs/Lietotaja_bildes/$u_image');
+copy($image_tmp,"Lietotājs/Lietotaja_bildes/$u_image");
 
 $atjaunot = "UPDATE lietotaji SET vards = '$vards1', uzvards = '$uzvards1', lietotajvards = '$lietotajvards1', parole = '$parole1', epasts = $epasts1, lietotaja_bilde = '$u_image' WHERE id = '$lietotaja_id'";
 $palaist = mysqli_query($con, $atjaunot);

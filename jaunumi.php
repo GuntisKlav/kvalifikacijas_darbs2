@@ -91,7 +91,7 @@ else
 				</div>
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
-				<div id="content_timeline">
+				<div id="content_timeline2">
 					<?php echo adminJaunumi() ?> 
 				</div>
 				<!--Content timeline ends-->

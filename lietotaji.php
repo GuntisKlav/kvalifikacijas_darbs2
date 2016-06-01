@@ -91,7 +91,7 @@ else
 				</div>
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
-				<div id="content_timeline">
+				<div id="content_timeline1">
 						<h3>Lietotāji:</h3> 
 					<?php 
 					$get_members = "SELECT * FROM lietotaji"; 

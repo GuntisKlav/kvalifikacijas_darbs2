@@ -18,6 +18,7 @@ else
 	<title>Laipni lūgts!</title>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="Stils/home_style.css" media="all"/>
+	<link rel="stylesheet" href="Stils/responsivsStyle.css" media="all"/>
 </head>
 
 
@@ -94,7 +95,7 @@ else
 				</div>
 				<!--user timeline ends-->
 				<!--Content timeline starts-->
-				<div id="content_timeline">
+				<div id="content_timeline1">
 					<form action="home.php?lietotaja_id=<?php echo $lietotaja_id;?>" method="post" id="f">
 					<h2>Kas Tev prātā?</h2>
 					<textarea cols="83" rows="4" name="saturs" placeholder=" Pievienot ierakstu..."></textarea><br/>

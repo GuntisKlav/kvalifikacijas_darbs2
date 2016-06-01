@@ -269,7 +269,7 @@ function lietotajaIeraksti(){
 		//Parāda visus ierakstus reizē
 		echo "<div id='posts'>
 		<div id='prof'>
-		<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='50' height='50'/>
+		<img src='Lietotājs/Lietotaja_bildes/$lietotaja_bilde' width='60' height='50'/>
 		<br>
 		<h3><a href='lietotaja_profils.php?id = $lietotaja_id'>$lietotajvards</a></h3>
 		<p>$ieraksta_datums</p>

@@ -123,7 +123,7 @@ else
 				<input type="text" id="zinas_nos" name="zinas_nos" placeholder=" Temats" size="49"/><br>
 				<textarea id="zin" name="zina" cols="50" rows="5" placeholder=" Kategorija"/></textarea><br/>
 				<input type="submit" name="zinojums" value="Sūtīt ziņu"/>
-			</form><br/>
+			</form><br/> 
 			
 			<img style="border:2px solid blue; border-radius:5px;" src="Lietotājs/Lietotaja_bildes/<?php echo $user_image;?>" width="100" height="100"/>
 			
